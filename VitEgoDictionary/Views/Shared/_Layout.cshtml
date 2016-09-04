@@ -1,0 +1,128 @@
+﻿@model VitEgoDictionary.Models.ViewModels.MasterLayoutViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="Build Up the Dictionary You Really Need. By using VitEgo Dictionary, you can easily compose your own dictionary by filling it with words, phrases, and expressions specific to your own needs only.">
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="robots" content="index,follow">
+    <meta name="keywords" content="VitEgo, dictionary, idioms, phrases, collocations" />
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="@Url.Content("~/Content/Style/Pics/favicon.ico")" type="image/x-icon">
+    <link rel="icon" href="@Url.Content("~/Content/Style/Pics/favicon.ico")" type="image/x-icon">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</head>
+
+<body>
+    <div class="container">
+        <div id="header">
+			<div class="authorization text-right">
+				 <ul class="authorization list-inline">
+                    @if(Model.IsAuthenticated) {
+				 	    <li class="authorization">
+                            <a href="@Url.Action("ChangePassword", "Account")"><span class="fa fa-user fa-fw fa-lg"></span>&nbsp;@Model.User.Identity.Name</a>
+                        </li>
+                        <li class="authorization">
+                            <a href="@Url.Action("Logout", "Account")"><span class="fa fa-sign-out fa-fw fa-lg"></span>&nbsp;Log out</a>
+                        </li>
+                    } else {
+                        <li class="authorization">
+                            <a href="@Url.Action("Login", "Account")"><span class="fa fa-sign-in fa-fw fa-lg"></span>&nbsp;Log in</a>
+                        </li>
+                    }
+                </ul>
+			</div>
+            <div class="row" style="margin-top:10px">
+                <div class="col-xs-3 col-md-2">
+                    <img src="@Url.Content("~/Content/Style/Pics/vitego_min.png")" alt="ASP Logo"/>
+                </div>
+                <div class="col-xs-9 col-md-7">
+                    <img src="@Url.Content("~/Content/Style/Pics/dic_min.png")" alt="VitEgo Dictionary Logo" />
+                </div> 
+                <div id="owl-carousel" class="hidden-xs hidden-sm col-md-3 owl-carousel text-center">
+                    <a href="http://www.asp.net/mvc">
+                        <img src="@Url.Content("~/Content/Style/Pics/aspnetmvc.jpg")" alt="ASP.NET MVC Logo" />
+                    </a>
+                    <a href="http://www.macmillandictionary.com/">
+                        <img src="@Url.Content("~/Content/Style/Pics/macmillan.jpg")" alt="Macmillian Logo" />
+                    </a>
+                    <a href="https://www.vocabulary.com/dictionary/">
+                        <img src="@Url.Content("~/Content/Style/Pics/vocabulary.jpg")" alt="Vocabulary Logo" />
+                    </a>
+                    <a href="http://stackoverflow.com/">
+                        <img src="@Url.Content("~/Content/Style/Pics/stackoverflow.jpg")" alt="Stackoverflow Logo" />
+                    </a>
+                    <a href="https://mva.microsoft.com/">
+                        <img src="@Url.Content("~/Content/Style/Pics/virtualacademy.jpg")" alt="Virtual Academy Logo" />
+                    </a>
+                </div>
+			</div>
+			<div class="navigation text-center">
+				<ul class="navigation list-inline">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Words", "Index", "Word")</li>
+                    <li>@Html.ActionLink("Phrasal Verbs", "Index", "PhrasalVerb")</li>
+                    <li>@Html.ActionLink("Phrases", "Index", "Collocation")</li>
+                    <li>@Html.ActionLink("Idioms", "Index", "Idiom")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                </ul>
+                <ul class="navigation-mobile">
+                    <li>
+                        <a href="#/"><span class="fa fa-navicon fa-fw"></span>Menu</a>
+                        <ul style="display:none">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Words", "Index", "Word")</li>
+                            <li>@Html.ActionLink("Phrasal Verbs", "Index", "PhrasalVerb")</li>
+                            <li>@Html.ActionLink("Phrases", "Index", "Collocation")</li>
+                            <li>@Html.ActionLink("Idioms", "Index", "Idiom")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        @RenderBody()
+
+        <div id="footer" class="small">
+            <img src="@Url.Content("~/Content/Style/Pics/flag.png")" alt="Canada" />
+            &copy;VitEgo, Nanaimo, BC, Canada
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-dialog" role="dialog" aria-labelledby="dialog" aria-hidden="true">
+	    <div class="modal-dialog modal-sm">
+		    <div class="modal-content">
+			    <div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Title</h4>
+				</div>
+				<div class="modal-body">
+                    <p>Are you sure you want to delete this?</p>
+				 </div>
+				 <div class="modal-footer">
+				    <button type="button" class="button button-primary" data-dismiss="modal">Close</button>
+				 </div>
+			</div>
+		</div>
+	</div>
+
+    <div class="modal" id="process" role="document" aria-labelledby="dialog" aria-hidden="true">
+	    <div class="modal-dialog modal-sm">
+		    <div style="text-align:center">
+			    <img src="@Url.Content("~/Content/Style/Pics/loader.gif")" alt="processing..."  style="width:300px" />
+			</div>
+		</div>
+	</div>
+
+    @*<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-master-layout.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-dialogs.js")"></script>*@
+
+></body>
+</html>

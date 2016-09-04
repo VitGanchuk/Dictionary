@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DictionaryModelStoreContainer" CdmEntityContainer="DictionaryEntities">
+    <EntitySetMapping Name="Collocations">
+      <EntityTypeMapping TypeName="DictionaryModel.Collocation">
+        <MappingFragment StoreEntitySet="Collocation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CollocationExamples">
+      <EntityTypeMapping TypeName="DictionaryModel.CollocationExample">
+        <MappingFragment StoreEntitySet="CollocationExample">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_Collocation" ColumnName="IDF_Collocation" />
+          <ScalarProperty Name="Example" ColumnName="Example" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CollocationMixes">
+      <EntityTypeMapping TypeName="DictionaryModel.CollocationMix">
+        <MappingFragment StoreEntitySet="CollocationMix">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_Word" ColumnName="IDF_Word" />
+          <ScalarProperty Name="IDF_Collocation" ColumnName="IDF_Collocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Examples">
+      <EntityTypeMapping TypeName="DictionaryModel.Example">
+        <MappingFragment StoreEntitySet="Example">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_WordMeaning" ColumnName="IDF_WordMeaning" />
+          <ScalarProperty Name="WordExample" ColumnName="Example" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GrammarStructures">
+      <EntityTypeMapping TypeName="DictionaryModel.GrammarStructure">
+        <MappingFragment StoreEntitySet="GrammarStructure">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Idioms">
+      <EntityTypeMapping TypeName="DictionaryModel.Idiom">
+        <MappingFragment StoreEntitySet="Idiom">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdiomExamples">
+      <EntityTypeMapping TypeName="DictionaryModel.IdiomExample">
+        <MappingFragment StoreEntitySet="IdiomExample">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_Idiom" ColumnName="IDF_Idiom" />
+          <ScalarProperty Name="Example" ColumnName="Example" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdiomMixes">
+      <EntityTypeMapping TypeName="DictionaryModel.IdiomMix">
+        <MappingFragment StoreEntitySet="IdiomMix">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_Word" ColumnName="IDF_Word" />
+          <ScalarProperty Name="IDF_Idiom" ColumnName="IDF_Idiom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inheritances">
+      <EntityTypeMapping TypeName="DictionaryModel.Inheritance">
+        <MappingFragment StoreEntitySet="Inheritance">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_RootWord" ColumnName="IDF_RootWord" />
+          <ScalarProperty Name="IDF_DerivedWord" ColumnName="IDF_DerivedWord" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Meanings">
+      <EntityTypeMapping TypeName="DictionaryModel.Meaning">
+        <MappingFragment StoreEntitySet="Meaning">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_Word" ColumnName="IDF_Word" />
+          <ScalarProperty Name="WordMeaning" ColumnName="Meaning" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhrasalVerbs">
+      <EntityTypeMapping TypeName="DictionaryModel.PhrasalVerb">
+        <MappingFragment StoreEntitySet="PhrasalVerb">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_Word" ColumnName="IDF_Word" />
+          <ScalarProperty Name="IDF_FirstPreposition" ColumnName="IDF_FirstPreposition" />
+          <ScalarProperty Name="IDF_SecondPreposition" ColumnName="IDF_SecondPreposition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhrasalVerbExamples">
+      <EntityTypeMapping TypeName="DictionaryModel.PhrasalVerbExample">
+        <MappingFragment StoreEntitySet="PhrasalVerbExample">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_PhrasalVerbMeaning" ColumnName="IDF_PhrasalVerbMeaning" />
+          <ScalarProperty Name="Example" ColumnName="Example" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhrasalVerbMeanings">
+      <EntityTypeMapping TypeName="DictionaryModel.PhrasalVerbMeaning">
+        <MappingFragment StoreEntitySet="PhrasalVerbMeaning">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_PhrasalVerb" ColumnName="IDF_PhrasalVerb" />
+          <ScalarProperty Name="IDF_SynonymWord" ColumnName="IDF_SynonymWord" />
+          <ScalarProperty Name="Meaning" ColumnName="Meaning" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrepositionExamples">
+      <EntityTypeMapping TypeName="DictionaryModel.PrepositionExample">
+        <MappingFragment StoreEntitySet="PrepositionExample">
+          <ScalarProperty Name="IDF_PrepositionMix" ColumnName="IDF_PrepositionMix" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Example" ColumnName="Example" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrepositionMixes">
+      <EntityTypeMapping TypeName="DictionaryModel.PrepositionMix">
+        <MappingFragment StoreEntitySet="PrepositionMix">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_Word" ColumnName="IDF_Word" />
+          <ScalarProperty Name="IDF_Preposition" ColumnName="IDF_Preposition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpeechParts">
+      <EntityTypeMapping TypeName="DictionaryModel.SpeechPart">
+        <MappingFragment StoreEntitySet="SpeechPart">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpeechPartVariations">
+      <EntityTypeMapping TypeName="DictionaryModel.SpeechPartVariation">
+        <MappingFragment StoreEntitySet="SpeechPartVariation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_KeyWord" ColumnName="IDF_Key" />
+          <ScalarProperty Name="IDF_ValueWord" ColumnName="IDF_Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Synonyms">
+      <EntityTypeMapping TypeName="DictionaryModel.Synonym">
+        <MappingFragment StoreEntitySet="Synonym">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_RootWord" ColumnName="IDF_Key" />
+          <ScalarProperty Name="IDF_SynonymWord" ColumnName="IDF_Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Variations">
+      <EntityTypeMapping TypeName="DictionaryModel.Variation">
+        <MappingFragment StoreEntitySet="Variation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_BaseWord" ColumnName="IDF_BaseWord" />
+          <ScalarProperty Name="IDF_VariedWord" ColumnName="IDF_VariedWord" />
+          <ScalarProperty Name="IDF_GrammarStructure" ColumnName="IDF_GrammarStructure" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Words">
+      <EntityTypeMapping TypeName="DictionaryModel.Word">
+        <MappingFragment StoreEntitySet="Word">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDF_SpeechPart" ColumnName="IDF_SpeechPart" />
+          <ScalarProperty Name="IsInheritanceRoot" ColumnName="IsRoot" />
+          <ScalarProperty Name="IsVariationBase" ColumnName="IsBase" />
+          <ScalarProperty Name="IsUnknown" ColumnName="IsUnknown" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

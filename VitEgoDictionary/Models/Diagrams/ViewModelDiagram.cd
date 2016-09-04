@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="VitEgoDictionary.Models.ViewModels.MasterLayoutViewModel">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAIAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\MasterLayoutViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.ViewModels.AccountChangePasswordiewModel">
+    <Position X="7" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Models\ViewModels\AccountChangePasswordViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.ViewModels.ItemListViewModel">
+    <Position X="0.5" Y="3.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAQAAAQCAAAAABAAAAAAgAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\ItemListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.ViewModels.UrlReferrerViewModel">
+    <Position X="4.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\ViewModels\UrlReferrerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.ViewModels.EditItemViewModel">
+    <Position X="7" Y="4" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\EditItemViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.ViewModels.ItemViewModel">
+    <Position X="4.25" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\ItemViewModel .cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

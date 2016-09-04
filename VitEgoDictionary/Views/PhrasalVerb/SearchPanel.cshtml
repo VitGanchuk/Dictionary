@@ -1,0 +1,57 @@
+﻿@model VitEgoDictionary.Models.Word
+
+@using VitEgoDictionary.Models
+
+<div id="word-search-panel" class="panel panel-default">
+    <div class="panel-body">
+        <div id="simple-search-panel">
+            @using (Html.BeginForm("Item", "PhrasalVerb", FormMethod.Get, new { id = "search-form" })) {
+                <label>Search</label>
+                <a href="#/" id="advanced-search-open" class="inner pull-right">
+                    <span class="fa fa-search-plus fa-fw"></span>
+                </a>
+                @Html.TextBox("search", null, new { @class = "typeahead form-control", autocomplete = "off", db_id = "-1" })
+            }
+        </div>
+        <div id="advanced-search-panel" style="display:none">
+            @using (Html.BeginForm("LoadItems", "PhrasalVerb", FormMethod.Post, new { id = "search-advanced-form" }))
+            {
+                var formalities = Session["PhrasalVerbSearchFormalities"] == null ? null : Session["PhrasalVerbSearchFormalities"] as IEnumerable<int>;
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 form-group">
+                        <label>Base Verb</label>
+                        @Html.TextBox("base-verb", Model == null ? null : Model.Name, new { @class = "typeahead form-control", autocomplete = "off", 
+                            db_id = Model == null ? -1 : Model.ID })
+                    </div>
+                    <div class="col-xs-12 col-sm-4 form-group">
+                        <label>Formalities</label>
+                        <select id="formalities" class="selectpicker form-control" multiple data-selected-text-format="count>3">
+                            @if(formalities != null) { <option>all</option> }
+                            else { <option selected="selected">all</option> }
+                            <option data-divider="true"></option>
+                            @foreach (var formality in Session["Formalities"] as IEnumerable<Formality>)
+                            {
+                                if (formalities != null && formalities.Any(i => i == formality.ID)) 
+                                { 
+                                    <option value="@formality.ID" selected="selected">@formality.Name</option>
+                                }
+                                else { <option value="@formality.ID">@formality.Name</option> }
+                            }
+                        </select>
+                        <input type="hidden" id="formalities-all" value="true" />
+                    </div>
+                </div>
+                <hr />
+                <div class="text-right">
+                    <a href="#/" id="advanced-search-cancel" class="button button-default">Cancel</a>
+                    <input type="button" class="button button-primary" id="submit" value="Search" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-validate.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-shared-search-panel.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-phrasal-verb-search-panel.js")"></script>
+

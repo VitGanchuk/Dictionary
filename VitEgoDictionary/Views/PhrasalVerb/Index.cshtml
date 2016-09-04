@@ -1,0 +1,56 @@
+﻿@model VitEgoDictionary.Models.ViewModels.ItemListViewModel
+
+@{
+    IEnumerable<VitEgoDictionary.Models.PhrasalVerb> phrasalVerbs = Model.Items as IEnumerable<VitEgoDictionary.Models.PhrasalVerb>;
+    ViewBag.Title = "VitEgo Dictionary | Phrasal Verbs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="body">
+    <div id="body-title"><h1>Phrasal Verbs</h1></div>
+    <hr />
+    <div id="body-body">
+        
+        @{ Html.RenderAction("SearchPanel", "PhrasalVerb"); }                  
+        
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="dashboard text-right">
+                    <a href="@Url.Action("Create","PhrasalVerb")">
+                        <span class="fa fa-plus-square-o fa-lg fa-fw"></span><span>Create</span>
+                    </a>
+                </div>
+                <div>
+                    <h2 id="panel-body-header">Recent Phrasal Verbs                        
+                        <span class="pull-right note">
+                            @if (Model.isFiltered) { <span class="fa fa-filter fa-fw"></span> } else { <span class="fa fa-hashtag fa-fw"></span> }
+                            @Model.OverallRecords
+                        </span>
+                    </h2>
+                </div>
+                <hr />
+                <div>
+                    <ul class="index-list">
+                        @foreach (var phrasalVerb in phrasalVerbs)
+                        {
+                            <li>
+                                <a href="@Url.Action("Item", "PhrasalVerb", new { id = phrasalVerb.ID })"><span class="index-list-item">@phrasalVerb.Name</span></a>
+                                <ul class="meaning-list">
+                                    @foreach (var meaning in phrasalVerb.Meanings.OrderBy(i => i.Meaning))
+                                    {
+                                        <li><span class="meaning">@meaning.Meaning</span></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                @{ Html.RenderPartial("Pager"); }
+
+            </div>
+        </div>
+    </div>	
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-shared-list.js")"></script>

@@ -1,0 +1,38 @@
+﻿@model VitEgoDictionary.Models.ViewModels.MasterLayoutViewModel
+
+@{
+    ViewBag.Title = "VitEgo Dictionary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="body">
+    <div id="body-title"><h1>VitEgo Dictionary</h1></div>
+    <hr />
+    <div id="body-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div><h2 id="panel-body-header">Build Up the Dictionary You Really Need</h2></div>
+                <hr />
+                <div>
+                    <p>Dictionaries are great for looking up a new unfamiliar word, but mostely they are not as handy when it comes to keeping some unique content. Using this site, you can easily build up your own dictionary by filling it with words, phrases, and expressions specific to your own needs only. Please read on the full description in greater detail by clicking on @Html.ActionLink("About", "About", "Home") link</p>
+                    <p>
+                        @Html.ActionLink("Words", "Index", "Word", null, new { @class = "section-title button button-primary panel-toggle" })
+                    </p>
+                    <p>Words are building bricks of any language. Nouns, verbs, adjectives, each time you see a new word that draws your attention, you can put it down to your dictionary along with its meanings, range of others forms, and examples of use. You can also establish relations between words with a more specific meaning and more general words. For example, ‘a spoon’ is a hyponym of ‘cutlery’, cool?</p>
+                    <p>
+                        @Html.ActionLink("Phrasal Verbs", "Index", "PhrasalVerb", null, new { @class = "section-title button button-primary panel-toggle" })
+                    </p>
+                    <p>Moving on, a phrasal verb is a verb plus a preposition that together creates a meaning different from the original verb. They are extremely confusing and hard to memorize, but they are commonly used in informal casual speech. So, embrace the fact – you must know them to speak naturally.</p>
+                    <p>
+                        @Html.ActionLink("Phrases", "Index", "Collocation", null, new { @class = "section-title button button-primary panel-toggle" })
+                    </p>
+                    <p>Amazingly, but in most cases we cannot just put words together in some arbitrary way. Conversely, most words tend to be combined with very limited number of other words composing phrases that are widely used. These steady combinations are called collocations or phrases and they are definitely worth being known. You can associate any phrase with words that comprise it, but please do not confuse collocations with idioms. </p>
+                    <p>
+                        @Html.ActionLink("Idioms", "Index", "Idiom", null, new { @class = "section-title button button-primary panel-toggle" })
+                    </p>
+                    <p>There are many definitions of idioms, but all of them agree on the meaning of an idiom is absolutely unpredictable and cannot be retrieved from literal meanings of its constituents. They include metaphors, slang, hyperboles, similes and so forth. They are natural for native speaker, so do not miss your chance and save a new one in the dictionary.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+﻿<div id="word-search-panel" class="panel panel-default">
+    <div class="panel-body">
+        <div id="simple-search-panel">
+            @using (Html.BeginForm("Item", "Idiom", FormMethod.Get, new { id = "search-form" })) {
+                <label>Search</label>
+                @Html.TextBox("search", null, new { @class = "typeahead form-control", autocomplete = "off", db_id = "-1" })
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-validate.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-idiom-search-panel.js")"></script>
+

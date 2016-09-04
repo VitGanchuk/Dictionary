@@ -1,0 +1,111 @@
+﻿@model VitEgoDictionary.Models.ViewModels.UrlReferrerViewModel
+
+@using VitEgoDictionary.Models
+@using VitEgoDictionary.Models.Extensions
+
+@{
+    ViewBag.Title = "VitEgo Dictionary | New Collocation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="body">
+    <div id="body-title"><h1>Phrases</h1></div>
+    <hr />
+    <div id="body-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div>
+                    <h2 id="panel-body-header">
+                        <span>New Phrase</span>
+                    </h2>
+                </div>
+                <hr />
+                @*// Collocation section*@
+                <div>
+                    <hr />
+                    <form id="item-form-base">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-6 form-group">
+                                <label>Phrase</label>
+                                @Html.TextBox("base-word", null, new { @class = "form-control", autocomplete = "off", db_id = "-1" })
+                                @Html.Hidden("speech-part", 0)
+                                @Html.Hidden("url", "/Collocation/Create")
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-lg-3 form-group">
+                                <label>Topic</label>
+                                @Html.DropDownList("Topic", new SelectList(Session["Topics"] as IEnumerable<Topic>, "Id", "Name", 1),
+                                new { id = "topic", @class = "selectpicker form-control" })
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-lg-3 form-group">
+                                <label>Formality</label>
+                                @Html.DropDownList("Formality", new SelectList(Session["Formalities"] as IEnumerable<Formality>, "Id", "Name", 1),
+                                new { id = "formality", @class = "selectpicker form-control" })
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                @*// Meaning section*@
+                <div id ="meaning-section" class="section">
+                    <hr />
+                    <div class="form-group">
+                        <span class="section-title button button-primary panel-toggle">Meanings</span>
+                        <span class="note item-counter">0 items</span>
+                        <a href="#/" class="panel-toggle"><span class="section-chevron fa fa-chevron-right fa-fw pull-right"></span></a>
+                    </div>
+                    <div class="edit-panel" style="display:none">
+                        <form id="item-form-meaning">
+                            <div class="data-item-container">
+                            </div>
+                        </form>
+                        <div>
+                            <a href="#/" class="more-meanings small">
+                                <span class="fa fa-plus-square-o fa-lg fa-fw"></span><span>More meanings</span>
+                            </a>
+                        </div>
+                        <div class="form-group text-right">
+                            <input type="button" class="button button-primary panel-toggle" value="OK" />
+                        </div>
+                    </div>
+                </div>
+                @*// Associated words section*@
+                <div class="section" id="mix-section">
+                    <hr />
+                    <div class="form-group">
+                        <span class="section-title button button-primary panel-toggle">Associated Words</span>
+                        @{
+                            <span class="note item-counter">0 Items</span>
+                        }
+                        <a href="#/" class="panel-toggle"><span class="section-chevron fa fa-chevron-right fa-fw pull-right"></span></a>
+                    </div>
+                    <div class="edit-panel" style="display:none">
+                        <form id="item-form-association">
+                            <div class="data-item-container row">
+                            </div>
+                        </form>
+                        <div>
+                            <a href="#/" class="more-associated-words small">
+                                <span class="fa fa-plus-square-o fa-lg fa-fw"></span><span>More associated words</span>
+                            </a>
+                        </div>
+                        <div class="form-group text-right">
+                            <input type="button" class="button button-primary panel-toggle" value="OK" />
+                        </div>
+                    </div>
+                </div>
+                @*// Submit section*@
+                <div>
+                    <hr />
+                    <div class="text-right">
+                        <a href="@Model.UrlReferrer" class="button button-default">Cancel</a>
+                        <input type="button" class="button button-primary" id="submit" value="Save" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-validate.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-shared-create-edit.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-shared-idiom-collocation-create-edit.js")"></script>
+

@@ -1,0 +1,388 @@
+﻿@model VitEgoDictionary.Models.ViewModels.EditItemViewModel
+
+@using VitEgoDictionary.Models
+@using VitEgoDictionary.Models.Extensions
+@using VitEgoDictionary.Models.Utilities
+
+@{
+    Word word = Model.Item as Word;
+    ViewBag.Title = "VitEgo Dictionary | " + word.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="body">
+    <div id="body-title"><h1>Words</h1></div>
+    <hr />
+    <div id="body-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div>
+                    <h2 id="panel-body-header">
+                        <span>@word.Name</span>
+                        <span class="note">@word.SpeechPart.Name</span>
+                    </h2>
+                </div>
+                @*// Word section*@       
+                <div>
+                    <hr />
+                    <form id="item-form-base">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-9 form-group">
+                                <label class="required">Word</label>
+                                @Html.TextBox("base-word", word.Name, new { @class = "form-control required", autocomplete = "off", db_id = word.ID })
+                                @Html.Hidden("url", "/Word/Edit")
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3 form-group">
+                                <label>Part of Speech</label>
+                                @Html.DropDownList("SpeechPart", new SelectList(Session["SpeechParts"] as IEnumerable<SpeechPart>, "Id", "Name", word.IDF_SpeechPart),
+                                new { id = "speech-part", @class = "selectpicker form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-3 form-group">
+                                <label>Topic</label>
+                                @Html.DropDownList("Topic", new SelectList(Session["Topics"] as IEnumerable<Topic>, "Id", "Name", word.IDF_Topic),
+                                    new { id = "topic", @class = "selectpicker form-control" })
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3 form-group">
+                                <label>Formality</label>
+                                @Html.DropDownList("Formality", new SelectList(Session["Formalities"] as IEnumerable<Formality>, "Id", "Name", word.IDF_Formality),
+                                    new { id = "formality", @class = "selectpicker form-control" })
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3 form-group">
+                                <label>Countability</label>
+                                @if (word.IDF_SpeechPart == 1) // This is a noun
+                                {
+                                    @Html.DropDownList("Countability", new SelectList(Session["Countabilities"] as IEnumerable<Countability>, "Id", "Name",
+                                        word.IDF_Countability), new { id = "countability", @class = "selectpicker form-control" }).IsDisabled(false)
+                                }
+                                else // This is something else
+                                {
+                                    @Html.DropDownList("Countability", new SelectList(Session["Countabilities"] as IEnumerable<Countability>, "Id", "Name",
+                                        word.IDF_Countability), "not applicable", new { id = "countability", @class = "selectpicker form-control" }).IsDisabled(true)
+                                }
+
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3 form-group">
+                                <label>General Word</label>
+                                <img id="general-word-processing" style="display:none" src="~/Content/Style/Pics/processing.gif" alt="processing..." />
+                                @Html.TextBox("generic-word", word.GenericWord == null ? String.Empty : word.GenericWord.Name,
+                                    new { @class = "typeahead form-control", autocomplete = "off", db_id = word.GenericWord == null ? -1 : word.GenericWord.ID, db_item = "-1" })
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                @*// Variation section: for nouns, verbs, adjectives, and adverbs only && the word 'be' is not changed*@
+                <div id="variation-section">
+                    @if((word.IDF_SpeechPart == 1 || word.IDF_SpeechPart == 2 || word.IDF_SpeechPart == 3 || word.IDF_SpeechPart == 4) && word.Name != "be")
+                    {
+                        <hr />
+                        <div class="form-group">
+                            <span id="variation-toggle-button" class="section-title button button-primary panel-toggle">Other Forms</span>
+                            @{
+                                <span class="note item-counter">@word.Variations.Count @(word.Variations.Count == 1 ? "item" : "items")</span>
+                            }
+                            <img id="variation-processing" style="display:none" src="~/Content/Style/Pics/processing.gif" alt="processing..." />
+                            <a href="#/" class="panel-toggle"><span class="section-chevron fa fa-chevron-right fa-fw pull-right"></span></a>
+                        </div>
+                        <div class="edit-panel" style="display:none">
+                            <form id="item-form-variation">
+                                <div class="row">
+                                    <div class="data-item-container">
+                                        @foreach (var structure in Model.GrammarStructures)
+                                        {
+                                            <div class="col-xs-12 col-sm-6 col-md-3 form-group data-item">
+                                                <label>@structure.Name</label>
+                                                @{
+                                                    var variation = word.Variations.FirstOrDefault(i => i.IDF_GrammarStructure == structure.ID);
+                                                    @Html.TextBox("structure-" + structure.ID, variation == null ? String.Empty : variation.Name,
+                                                                        new { @class = "form-control", autocomplete = "off", db_id = structure.ID });
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="form-group text-right">
+                                    <input type="button" class="button button-primary panel-toggle" value="OK" />
+                                </div>
+                            </form>
+                        </div>
+                    }
+                </div>
+                @*// Meaning section*@
+                <div id="meaning-section" class="section">
+                    <hr />
+                    <div class="form-group">
+                        <span class="section-title button button-primary panel-toggle panel-toggle">Meanings</span>
+                        @{
+                            <span class="note item-counter">@word.Meanings.Count @(word.Meanings.Count == 1 ? "item" : "items")</span>
+                        }
+                        <a href="#/" class="panel-toggle"><span class="section-chevron fa fa-chevron-right fa-fw pull-right"></span></a>
+                    </div>
+                    <div class="edit-panel" style="display:none">
+                        <form id="item-form-meaning">
+                            <div class="data-item-container">
+                                @foreach (var meaning in word.Meanings.OrderBy(i => i.Meaning))
+                                {
+                                    <div class="subsection data-item">
+                                        <div class="dashboard-subsection">
+                                            <span class="dashboard-title">Meaning</span>
+                                            <a href="#/" class="pull-right small" data-toggle="modal" data-target="#modal-dialog"
+                                               data-content="Are you sure you want to delete this meaning?"
+                                               data-action="delete-data-item" data-buttons="CloseConfirm">
+                                                <span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>
+                                            </a>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 form-group">
+                                                <label class="required">Meaning</label>
+                                                <input type="text" value="@meaning.Meaning" autocomplete="off" class="meaning form-control required"
+                                                       db-id="@meaning.ID">
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6">
+                                                <div class="data-example-subitem-container">
+                                                    @foreach (var example in meaning.Examples)
+                                                    {
+                                                        <div class="form-group data-subitem">
+                                                            <label class="required">Example</label>
+                                                            <a href="#/" class="inner pull-right small" data-toggle="modal" data-target="#modal-dialog"
+                                                               data-content="Are you sure you want to delete this example?"
+                                                               data-action="delete-data-subitem" data-buttons="CloseConfirm">
+                                                                <span class="fa fa-trash-o fa-lg fa-fw"></span>
+                                                            </a>
+                                                            <input type="text" value="@example.Example" class="example inner form-control required"
+                                                                   autocomplete="off" , db-id=@example.ID />
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div class="text-right form-group">
+                                                    <a href="#/" class="more-meaning-examples small">
+                                                        <span class="fa fa-plus-square-o fa-lg fa-fw"></span><span>More examples</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="border-color:#DDD" />
+                                        <div class="synonyms">
+                                            <div class="data-synonym-subitem-container">
+                                                @if (meaning.SynonymSet != null)
+                                                {
+                                                    foreach (var wordMeaning in meaning.SynonymSet.WordMeanings.
+                                                        Where(i => i.IDF_Word != word.ID).OrderBy(i => i.Word.Name))
+                                                    {
+                                                        <div class="subsection data-subitem">
+                                                            <div class="dashboard-subsection">
+                                                                <span class="dashboard-title">Synonym</span>
+                                                                <a href="#/" class="pull-right small" data-toggle="modal" data-target="#modal-dialog"
+                                                                   data-content="Are you sure you want to delete this synonym from the synonym set?"
+                                                                   data-action="delete-data-subitem" data-buttons="CloseConfirm">
+                                                                    <span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-6 form-group">
+                                                                    <label class="required">Synonym</label>
+                                                                    <input type="text" value="@wordMeaning.Word.Name" class="synonym typeahead form-control required"
+                                                                           autocomplete="off" db-id="@wordMeaning.ID" db-item="@((int)Item.Word)" />
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-6 form-group">
+                                                                    <label style="margin-right:5px">Synonym Meaning</label>
+                                                                    <img style="display:none" src="~/Content/Style/Pics/processing.gif" alt="processing..." />
+                                                                    @Html.DropDownList("word-meaning-" + wordMeaning.ID,
+                                                                                new SelectList(wordMeaning.Word.Meanings, "Id", "Meaning", wordMeaning.ID),
+                                                                                new { @class = "selectpicker form-control", db_item=((int)Item.Word) })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    foreach (var phrasalVerbMeanings in meaning.SynonymSet.PhrasalVerbMeanings.OrderBy(i => i.PhrasalVerb.Name))
+                                                    {
+                                                        <div class="subsection data-subitem">
+                                                            <div class="dashboard-subsection">
+                                                                <span class="dashboard-title">Synonym</span>
+                                                                <a href="#/" class="pull-right small" data-toggle="modal" data-target="#modal-dialog"
+                                                                   data-content="Are you sure you want to delete this synonym from the synonym set?"
+                                                                   data-action="delete-data-subitem" data-buttons="CloseConfirm">
+                                                                    <span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-6 form-group">
+                                                                    <label class="required">Synonym</label>
+                                                                    <input type="text" value="@phrasalVerbMeanings.PhrasalVerb.Name"
+                                                                           class="synonym typeahead form-control required" autocomplete="off"
+                                                                           db-id="@phrasalVerbMeanings.ID" db-item="@((int)Item.PhrasalVerb)" />
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-6 form-group">
+                                                                    <label style="margin-right:5px">Synonym Meaning</label>
+                                                                    <img style="display:none" src="~/Content/Style/Pics/processing.gif" alt="processing..." />
+                                                                    @Html.DropDownList("phrasal-verb-meaning-" + phrasalVerbMeanings.ID,
+                                                                                new SelectList(phrasalVerbMeanings.PhrasalVerb.Meanings, "Id", "Meaning", phrasalVerbMeanings.ID),
+                                                                                new { @class = "selectpicker form-control", db_item = ((int)Item.PhrasalVerb) })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    foreach (var collocationMeaning in meaning.SynonymSet.CollocationMeanings.OrderBy(i => i.Collocation.Name))
+                                                    {
+                                                        <div class="subsection data-subitem">
+                                                            <div class="dashboard-subsection">
+                                                                <span class="dashboard-title">Synonym</span>
+                                                                <a href="#/" class="pull-right small" data-toggle="modal" data-target="#modal-dialog"
+                                                                   data-content="Are you sure you want to delete this synonym from the synonym set?"
+                                                                   data-action="delete-data-subitem" data-buttons="CloseConfirm">
+                                                                    <span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-6 form-group">
+                                                                    <label class="required">Synonym</label>
+                                                                    <input type="text" value="@collocationMeaning.Collocation.Name"
+                                                                           class="synonym typeahead form-control required" autocomplete="off"
+                                                                           db-id="@collocationMeaning.ID" db-item="@((int)Item.Collocation)" />
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-6 form-group">
+                                                                    <label style="margin-right:5px">Synonym Meaning</label>
+                                                                    <img style="display:none" src="~/Content/Style/Pics/processing.gif" alt="processing..." />
+                                                                    @Html.DropDownList("collocation-meaning-" + collocationMeaning.ID,
+                                                                        new SelectList(collocationMeaning.Collocation.Meanings, "Id", "Meaning", collocationMeaning.ID),
+                                                                        new { @class = "selectpicker form-control", db_item = ((int)Item.Collocation) })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    foreach (var idiomMeaning in meaning.SynonymSet.IdiomMeanings.OrderBy(i => i.Idiom.Name))
+                                                    {
+                                                        <div class="subsection data-subitem">
+                                                            <div class="dashboard-subsection">
+                                                                <span class="dashboard-title">Synonym</span>
+                                                                <a href="#/" class="pull-right small" data-toggle="modal" data-target="#modal-dialog"
+                                                                   data-content="Are you sure you want to delete this synonym from the synonym set?"
+                                                                   data-action="delete-data-subitem" data-buttons="CloseConfirm">
+                                                                    <span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-6 form-group">
+                                                                    <label class="required">Synonym</label>
+                                                                    <input type="text" required value="@idiomMeaning.Idiom.Name"
+                                                                           class="synonym typeahead form-control required" autocomplete="off"
+                                                                           db-id="@idiomMeaning.ID" db-item="@((int)Item.Idiom)" />
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-6 form-group">
+                                                                    <label style="margin-right:5px">Synonym Meaning</label>
+                                                                    <img style="display:none" src="~/Content/Style/Pics/processing.gif" alt="processing..." />
+                                                                    @Html.DropDownList("idiom-meaning-" + idiomMeaning.ID,
+                                                                                new SelectList(idiomMeaning.Idiom.Meanings, "Id", "Meaning", idiomMeaning.ID),
+                                                                                new { @class = "selectpicker form-control", db_item = ((int)Item.Idiom) })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+                                            <div>
+                                                <a href="#/" class="more-synonyms small">
+                                                    <span class="fa fa-plus-square-o fa-lg fa-fw"></span><span>More synonyms</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </form>
+                        <div>
+                            <a href="#/" class="more-meanings small">
+                                <span class="fa fa-plus-square-o fa-lg fa-fw"></span><span>More meanings</span>
+                            </a>
+                        </div>
+                        <div class="form-group text-right">
+                            <input type="button" class="button button-primary panel-toggle" value="OK" />
+                        </div>
+                    </div>
+                </div>
+                @*// Preposition section*@
+                <div id="preposition-section" class="section">
+                    <hr />
+                    <div class="form-group">
+                        <span class="section-title button button-primary panel-toggle panel-toggle">Prepositions</span>
+                        @{
+                            <span class="note item-counter">@word.PrepositionMixes.Count @(word.PrepositionMixes.Count == 1 ? "item" : "items")</span>
+                        }
+                        <a href="#/" class="panel-toggle"><span class="section-chevron fa fa-chevron-right fa-fw pull-right"></span></a>
+                    </div>
+                    <div class="edit-panel" style="display:none">
+                        <form id="item-form-preposition">
+                            <div class="data-item-container">
+                                @foreach (var prepositionMix in word.PrepositionMixes.OrderBy(i => i.IDF_Preposition))
+                                {
+                                    <div class="subsection data-item">
+                                        <div class="dashboard-subsection">
+                                            <span class="dashboard-title">Preposition</span>
+                                            <a href="#/" class="pull-right small" data-toggle="modal" data-target="#modal-dialog"
+                                               data-content="Are you sure you want to delete this preposition?"
+                                               data-action="delete-data-item" data-buttons="CloseConfirm">
+                                                <span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>
+                                            </a>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 form-group">
+                                                <label>Preposition</label>
+                                                @Html.DropDownList("preposition-" + prepositionMix.IDF_Preposition,
+                                                    new SelectList(Session["Prepositions"] as IEnumerable<Preposition>, "Id", "Name", prepositionMix.IDF_Preposition),
+                                                    new { @class = "preposition selectpicker form-control", data_live_search = "true", db_id = prepositionMix.ID })
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6">
+                                                <div class="data-example-subitem-container">
+                                                    @foreach (var example in prepositionMix.Examples)
+                                                    {
+                                                        <div class="form-group data-subitem">
+                                                            <label class="required">Example</label>
+                                                            <a href="#/" class="inner pull-right" data-toggle="modal" data-target="#modal-dialog"
+                                                               data-content="Are you sure you want to delete this example?"
+                                                               data-action="delete-data-subitem" data-buttons="CloseConfirm">
+                                                                <span class="fa fa-trash-o fa-fw"></span>
+                                                            </a>
+                                                            <input type="text" value="@example.Example" class="example inner form-control required"
+                                                                   autocomplete="off" , db-id="@example.ID" />
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div class="text-right">
+                                                    <a href="#/" class="more-meaning-examples small">
+                                                        <span class="fa fa-plus-square-o fa-lg fa-fw"></span><span>More examples</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </form>
+                        <div>
+                            <a href="#/" class="more-prepositions small">
+                                <span class="fa fa-plus-square-o fa-lg fa-fw"></span><span>More prepositions</span>
+                            </a>
+                        </div>
+                        <div class="form-group text-right">
+                            <input type="button" class="button button-primary panel-toggle" value="OK" />
+                        </div>
+                    </div>
+                </div>
+                @*// Submit section*@
+                <div>
+                    <hr />     
+                    <div class="text-right">
+                        <a href="@Url.Action("Item", "Word", new { id = word.ID })" class="button button-default">Cancel</a>
+                        <input type="button" class="button button-primary" id="submit" value="Save" />
+                    </div>
+                </div>           
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-validate.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-shared-create-edit.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/dictionary-shared-word-create-edit.js")"></script>
+

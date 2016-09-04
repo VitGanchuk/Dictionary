@@ -1,0 +1,19 @@
+﻿#advanced-search-open {
+    cursor:pointer;
+}
+
+ul.list-search {
+    margin-bottom:0px;
+}
+
+@media screen and (min-width: 512px) {
+   ul.list-search li {
+        width: 47%;
+    }
+}
+
+@media screen and (max-width: 512px) {
+   ul.list-search li {
+        width: 100%;
+    }
+}

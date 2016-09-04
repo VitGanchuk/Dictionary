@@ -1,0 +1,351 @@
+﻿/************************ FONT ******************************/
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('Fonts/glyphicons-halflings-regular.eot');
+  src: url('Fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('Fonts/glyphicons-halflings-regular.woff') format('woff'), url('Fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('Fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+/******************** BOOTSTRAP *************************/
+.form-control, 
+.btn,
+.dropdown-menu {
+    font-size: inherit !important;
+}
+
+.panel {
+    -webkit-box-shadow: 0 2px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),1px 1px 0 rgba(0,0,0,0.12);
+    -moz-box-shadow: 0 2px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),1px 1px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),1px 1px 0 rgba(0,0,0,0.12);
+}
+
+/******************** HEADER *************************/
+h1 {
+    font-size:1.6em;
+    -webkit-box-reflect: below -5px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(100, 100, 100, 0.4)));
+    margin:0px 0px 25px 0px;
+    color:#005A9C;
+    font-weight:bolder;
+}
+
+h2 {
+    font-size:1.3em;
+    color:#005A9C;
+    margin:0px 0px 5px 0px;
+    font-weight:bolder; 
+}
+
+h2 > span.note {
+    font-size:0.7em !important;
+    font-weight:normal !important; 
+}
+
+h3 {
+    font-size:1.2em;
+    color:#005A9C;
+    margin:0px 0px 5px 0px;
+    font-weight:bolder;
+}
+
+/******************** LIST *************************/
+ul.index-list {
+    list-style:none;
+    margin-left:-30px;
+}
+
+ul.meaning-list {
+    list-style:disc;
+    margin-left:-20px;
+    color:forestgreen;
+}
+
+ul.example-list {
+    list-style:disc;
+    margin-left:-20px;
+}
+
+ul.index-list > li, ol > li {
+    margin-bottom:0.5em;
+}
+
+ul.pagination {
+    margin:0px;
+}
+
+@media screen and (max-width: 768px) {
+    ol, ul {
+        margin-left:-20px;
+    }
+
+    ul.variation, ul.similar, ul.hyponym, ul.synonym, ul.phrasal-verb { 
+        list-style:disc;
+        margin-left:-20px;
+    }
+
+    ul.variation li, ul.similar li, ul.hyponym li, ul.synonym li, ul.phrasal-verb li { 
+        margin-right:10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    ul {
+        margin-left:-20px;
+    }
+
+    ul.variation li, ul.similar li, ul.hyponym li, ul.synonym li, ul.phrasal-verb li { 
+        display:inline;
+        list-style:none;
+        margin-right:10px;
+        margin-bottom:10px;
+    }
+}
+
+ul.synonym li:first-child{
+    list-style:none;
+    margin-right:10px;
+}
+
+/************************ DIV ******************************/
+.panel{
+    margin-bottom:15px;
+}
+
+.section-title {
+    display:inline-block;
+    width:160px;
+}
+
+.dashboard {
+    margin:-15px -15px 15px -15px;
+    padding: 5px 10px;
+    background-color:#E6E6E6;
+    border-bottom:1px solid #DDD;
+}
+
+.dashboard-subsection {
+    margin: -15px -15px 15px -15px;
+    padding: 5px 10px;
+    background-color:#E6E6E6;
+    border-bottom: 1px solid #DDD;
+    height: 30px;
+}
+
+.subsection {
+    border: 1px solid #DDD;
+    padding:15px;
+    margin:0px 0px 10px 0px;
+    border-radius:4px;
+    -webkit-box-shadow:#DDD 1px 1px 2px;
+    -moz-box-shadow:#DDD 1px 1px 2px;
+    box-shadow:#DDD 1px 1px 2px;
+}
+
+hr {
+     margin: 0px 0px 15px 0px;
+     border-top: 1px solid #a6c9e2;
+}
+
+/******************** ANCHORS ************************/
+a {
+    position: relative;
+}
+
+a:active{
+	top: 2px;
+    text-decoration:none;
+}
+
+a.button {
+    padding: 5px 15px;
+}
+
+a.button:hover {
+    text-decoration:none;
+}
+
+a.button-default, a.button-default:hover {
+    color:#333;
+}
+
+a.button-primary, a.button-primary:hover { 
+    color:#FFF;
+}
+
+a.inner {
+    position:relative; 
+    top:35px;   
+    padding:0px 4px; 
+    border-left:1px #ccc solid;
+    z-index:10;
+}
+
+/******************** IMG ************************/
+img.inner-processing {
+    position: relative;
+    top: -25px;
+    left: 5px;
+    float: left;
+    margin-bottom: -25px;
+}
+
+/******************** INPUTS ************************/
+input.inner {
+    padding:6px 36px 6px 12px;
+}
+
+/******************** MEDIA ************************/
+@media screen and (max-width: 768px) {
+    div.dashboard > a > span:last-child, 
+    div.dashboard-subsection > a > span:last-child { 
+        display:none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+}
+
+label.error { 
+    font-size:0.85em;
+    color:#A94442;
+}
+
+label.required:after {
+    color:#e32;
+    font-size:0.9em;
+    content:'\2217';
+    display:inline;
+    position:relative;
+    top:-5px;
+    left:2px;
+}
+
+input.error {
+    border-color:#C93A38;
+}
+
+input.error:focus {
+    border-color:#C93A38;
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(201, 56, 56, .6) !important;
+}
+
+.warning { 
+    color:#A94442;
+}
+
+label {
+    font-weight:normal;
+}
+
+/******************** SPAN ************************/
+span.section-chevron {
+    color:#428bca;
+    position: relative;
+    top: 3px;
+}
+
+span.variation {
+    /*Standard font so far*/
+}
+
+span.index-list-item {
+    font-size: 1.2em;
+}
+
+span.preposition, span.phrasal-verb, span.collocation, span.idiom {
+    color:#B40404;
+}
+
+span.speech-part, span.grammar-structure {
+    color:dimgrey;
+}
+
+span.meaning {
+    color:forestgreen;
+}
+
+span.note {
+    color:dimgrey;
+}
+
+span.example {
+    color:darkslateblue;
+    font-style:italic;
+}
+
+span.highlighted {
+    font-style:italic;
+    color:cadetblue;
+}
+
+span.underlined {
+    text-decoration:underline;
+}
+
+span.check-mark {
+    color:#005A9C;
+}
+
+span.topic {
+    font-size: 0.8em;
+    color: chocolate;
+}
+
+span.synonym{
+    color:chocolate;
+}
+
+span.dashboard-title{
+    color:dimgray;
+}
+
+/******************** BUTTON ************************/
+.button {
+    font-family:'Trebuchet MS', Verdana, Arial, sans-serif !important; 
+	padding:5px 15px;
+	position:relative;
+	border:1px solid transparent;
+	cursor:pointer;
+	text-decoration:none;
+    line-height:normal;
+    border-radius:3px;
+    min-width:64px;
+    margin-left:8px;
+    -webkit-border-radius:3px; 
+    -moz-border-radius:3px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.button:active{
+	position: relative;
+	top: 3px;
+}
+
+.button:focus{
+	box-shadow: 3px 3px 5px rgba(102, 175, 233, .8);
+}
+
+.button-default {
+    color:#333;
+    border-color:#CCC;
+    background: #FFF;
+}
+
+.button-default:hover {
+    border-color:#ADADAD;
+    background: #E6E6E6;
+}
+
+.button-primary {
+    color:#FFF;
+    border-color:#428bCA;
+    background:#428bCA;
+}
+
+.button-primary:hover {
+    border-color:#2A6496;
+    background:#2A6496;
+}

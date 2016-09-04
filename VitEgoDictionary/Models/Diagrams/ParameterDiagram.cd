@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="VitEgoDictionary.Models.Parameters.AccountChangePasswordParameter">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAABAAIAA=</HashCode>
+      <FileName>Models\Parameters\AccountChangePasswordParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.Parameters.AccountLoginParameter">
+    <Position X="0.5" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAAABAgAAA=</HashCode>
+      <FileName>Models\Parameters\AccountLoginParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.Parameters.CollocationIdiomParameter">
+    <Position X="12.25" Y="6" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Parameters\CollocationIdiomParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.Parameters.ExampleParameter">
+    <Position X="3.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Parameters\ExampleParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.Parameters.ItemListParameters">
+    <Position X="8" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAEAAAAAAAAEAAAAACQAAAA=</HashCode>
+      <FileName>Models\Parameters\ItemListParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.Parameters.MeaningParameter">
+    <Position X="3.75" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAgAAAAAAAAAAAAAAAAAAAAAAAQAAAAAI=</HashCode>
+      <FileName>Models\Parameters\MeaningParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.Parameters.SynonymMeaningParameter">
+    <Position X="5.5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Parameters\SynonymMeaningParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.Parameters.PrepositionMixParameter">
+    <Position X="3.75" Y="5.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAQAAACAA=</HashCode>
+      <FileName>Models\Parameters\PrepositionMixParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.Parameters.VariationParameter">
+    <Position X="6" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\Parameters\VariationParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.Parameters.ItemParameter">
+    <Position X="8.5" Y="3.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAgAAAAAAAAAAAAAACQAAAA=</HashCode>
+      <FileName>Models\Parameters\ItemParameter.cs</FileName>
+      <NewMemberFileName>Models\Parameters\WordParameter.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.Parameters.PhrasalVerbParameter">
+    <Position X="12.75" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\Parameters\PhrasalVerbParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.Parameters.WordParameter">
+    <Position X="11" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAEAAIAAAAACBEAAA=</HashCode>
+      <FileName>Models\Parameters\WordParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VitEgoDictionary.Models.Parameters.MixParameter">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Parameters\MixParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

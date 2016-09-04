@@ -1,0 +1,134 @@
+﻿@using VitEgoDictionary.Models
+
+@model VitEgoDictionary.Models.ViewModels.ItemViewModel
+
+@{
+    Collocation collocation = Model.Item as Collocation;
+    ViewBag.Title = "VitEgo Dictionary" + (collocation == null ? String.Empty : (" | " + collocation.Name));
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="body">
+    <div id="body-title"><h1>Phrases</h1></div>
+    <hr />
+    <div id="body-body">
+
+        @{ Html.RenderAction("SearchPanelSimple", "Collocation"); }
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="dashboard text-right">
+                    <a href="@Url.Action("Create", "Collocation")">
+                        <span class="fa fa-plus-square-o fa-lg fa-fw"></span><span>Create</span>
+                    </a>
+                    @if(collocation != null) {
+                        <a href="@Url.Action("Edit", "Collocation", new { id = collocation.ID })">
+                            <span class="fa fa-edit fa-lg fa-fw"></span><span>Edit</span>
+                        </a>
+                        <a href="#/" data-toggle="modal" data-target="#modal-dialog" data-content="Are you sure you want to delete the collocation '@collocation.Name'?" 
+                            data-buttons="CloseConfirm" data-action="@Url.Action("Delete", "Collocation", new { id = collocation.ID })">
+                            <span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>
+                        </a>
+                    }
+                </div>
+                @if (collocation == null) {   
+                    <div>
+                        <h2 class="warning">Search Results</h2>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="warning">Sorry, no results were found! Please try to search again with another parameters!</p>
+                    </div>
+                } else {
+                    <div>
+                        <h2>
+                            <span>@collocation.Name</span>
+                            @if (collocation.IDF_Formality != 1){ <span class="note">@collocation.Formality.Name</span> }
+                            <span class="topic note">(@collocation.Topic.Name)</span>
+                        </h2>
+                    </div>                     
+                     
+                    if (collocation.Meanings.Count > 0) {
+                        <hr />
+                        <div>
+                            <h3>Meanings</h3>
+                            <ol>
+                                @foreach (var meaning in collocation.Meanings.OrderBy(i => i.Meaning)) {
+                                    <li>
+                                        <span class="meaning">@meaning.Meaning</span>
+                                        <ul class="example-list">
+                                            @foreach (var example in meaning.Examples) {
+                                                <li>
+                                                    @foreach (var item in LexicalAnalyzer.Highlight(example.Example, collocation.Name)) {
+                                                        <span class="@(item.IsHighlighted ? "highlighted" : "example")">@item.Text</span>
+                                                    }
+                                                </li>
+                                            }
+                                        </ul>
+                                        @if (meaning.SynonymSet != null) {
+                                            <div>
+                                                <ul class="synonym">
+                                                    <li><span class="synonym">Synonyms:</span></li>
+                                                    @foreach (var synonym in meaning.SynonymSet.WordMeanings.
+                                                        Select(i => i.Word).Distinct().OrderBy(i => i.Name)) {
+                                                        <li>
+                                                            <a href="@Url.Action("Item", "Word", new { id = synonym.ID })">@synonym.Name
+                                                                <span class="speech-part">@synonym.SpeechPart.ShortName</span>
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                    @foreach (var synonym in meaning.SynonymSet.PhrasalVerbMeanings.
+                                                        Select(i => i.PhrasalVerb).Distinct().OrderBy(i => i.Name)) {
+                                                        <li>
+                                                            <a href="@Url.Action("Item", "PhrasalVerb", new { id = synonym.ID })">@synonym.Name
+                                                                <span class="speech-part">@synonym.Verb.SpeechPart.ShortName</span>
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                    @foreach (var synonym in meaning.SynonymSet.CollocationMeanings.Where(i => i.IDF_Collocation != collocation.ID).
+                                                        Select(i => i.Collocation).Distinct().OrderBy(i => i.Name)) {
+                                                        <li>
+                                                            <a href="@Url.Action("Item", "Collocation", new { id = synonym.ID })">@synonym.Name&nbsp;</a>
+                                                        </li>
+                                                    }
+                                                    @foreach (var synonym in meaning.SynonymSet.IdiomMeanings.
+                                                        Select(i => i.Idiom).Distinct().OrderBy(i => i.Name)) {
+                                                        <li>
+                                                            <a href="@Url.Action("Item", "Idiom", new { id = synonym.ID })">@synonym.Name&nbsp;</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        }
+                                    </li>
+                                }
+                            </ol>
+                        </div>
+                    }
+                    
+                    if (collocation.CollocationMixes.Count > 0) {
+                        <hr />
+                        <div>
+                            <h3>Associated Words</h3>
+                            <ul class="synonym">                                 
+                                @foreach (var collocationMix in collocation.CollocationMixes.OrderBy(i => i.Word.Name)) {
+                                    <li>
+                                        <a href="@Url.Action("Item", "Word", new { id = collocationMix.Word.ID })">
+                                            @collocationMix.Word.Name
+                                            <span class="speech-part">@collocationMix.Word.SpeechPart.ShortName</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                }
+                <div>
+                    <hr />
+                    <div class="text-right">
+                        <a href="@Model.UrlReferrer" class="button button-primary">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

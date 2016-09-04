@@ -1,0 +1,877 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DictionaryModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="DictionaryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CollocationMixes" EntityType="DictionaryModel.CollocationMix" />
+    <EntitySet Name="IdiomMixes" EntityType="DictionaryModel.IdiomMix" />
+    <EntitySet Name="PrepositionMixExamples" EntityType="DictionaryModel.PrepositionMixExample" />
+    <EntitySet Name="PrepositionMixes" EntityType="DictionaryModel.PrepositionMix" />
+    <EntitySet Name="SpeechParts" EntityType="DictionaryModel.SpeechPart" />
+    <EntitySet Name="Variations" EntityType="DictionaryModel.Variation" />
+    <AssociationSet Name="FK_PrepositionExample_PrepositionMix" Association="DictionaryModel.FK_PrepositionExample_PrepositionMix">
+      <End Role="PrepositionMix" EntitySet="PrepositionMixes" />
+      <End Role="PrepositionExample" EntitySet="PrepositionMixExamples" />
+    </AssociationSet>
+    <EntitySet Name="Topics" EntityType="DictionaryModel.Topic" />
+    <EntitySet Name="Prepositions" EntityType="DictionaryModel.Preposition" />
+    <AssociationSet Name="FK_PrepositionMix_Preposition1" Association="DictionaryModel.FK_PrepositionMix_Preposition1">
+      <End Role="Preposition" EntitySet="Prepositions" />
+      <End Role="PrepositionMix" EntitySet="PrepositionMixes" />
+    </AssociationSet>
+    <EntitySet Name="Countabilities" EntityType="DictionaryModel.Countability" />
+    <EntitySet Name="Formalities" EntityType="DictionaryModel.Formality" />
+    <EntitySet Name="GrammarStructures" EntityType="DictionaryModel.GrammarStructure" />
+    <AssociationSet Name="FK_GrammarStructures_SpeechParts" Association="DictionaryModel.FK_GrammarStructures_SpeechParts">
+      <End Role="SpeechPart" EntitySet="SpeechParts" />
+      <End Role="GrammarStructure" EntitySet="GrammarStructures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Variation_GrammarStructure" Association="DictionaryModel.FK_Variation_GrammarStructure">
+      <End Role="GrammarStructure" EntitySet="GrammarStructures" />
+      <End Role="Variation" EntitySet="Variations" />
+    </AssociationSet>
+    <EntitySet Name="PhrasalVerbMeaningExamples" EntityType="DictionaryModel.PhrasalVerbMeaningExample" />
+    <EntitySet Name="WordMeaningExamples" EntityType="DictionaryModel.WordMeaningExample" />
+    <EntitySet Name="IdiomMeaningExamples" EntityType="DictionaryModel.IdiomMeaningExample" />
+    <EntitySet Name="CollocationMeaningExamples" EntityType="DictionaryModel.CollocationMeaningExample" />
+    <EntitySet Name="PhrasalVerbMeanings" EntityType="DictionaryModel.PhrasalVerbMeaning" />
+    <EntitySet Name="PhrasalVerbs" EntityType="DictionaryModel.PhrasalVerb" />
+    <EntitySet Name="WordMeanings" EntityType="DictionaryModel.WordMeaning" />
+    <EntitySet Name="Words" EntityType="DictionaryModel.Word" />
+    <AssociationSet Name="FK_CollocationMix_Word" Association="DictionaryModel.FK_CollocationMix_Word">
+      <End Role="Word" EntitySet="Words" />
+      <End Role="CollocationMix" EntitySet="CollocationMixes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Words_Countability" Association="DictionaryModel.FK_Words_Countability">
+      <End Role="Countability" EntitySet="Countabilities" />
+      <End Role="Word" EntitySet="Words" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Words_Formality" Association="DictionaryModel.FK_Words_Formality">
+      <End Role="Formality" EntitySet="Formalities" />
+      <End Role="Word" EntitySet="Words" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdiomMix_Word" Association="DictionaryModel.FK_IdiomMix_Word">
+      <End Role="Word" EntitySet="Words" />
+      <End Role="IdiomMix" EntitySet="IdiomMixes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhrasalVerbExample_PhrasalVerbMeaning" Association="DictionaryModel.FK_PhrasalVerbExample_PhrasalVerbMeaning">
+      <End Role="PhrasalVerbMeaning" EntitySet="PhrasalVerbMeanings" />
+      <End Role="PhrasalVerbMeaningExample" EntitySet="PhrasalVerbMeaningExamples" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhrasalVerbMeaning_PhrasalVerb" Association="DictionaryModel.FK_PhrasalVerbMeaning_PhrasalVerb">
+      <End Role="PhrasalVerb" EntitySet="PhrasalVerbs" />
+      <End Role="PhrasalVerbMeaning" EntitySet="PhrasalVerbMeanings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhrasalVerb_Preposition" Association="DictionaryModel.FK_PhrasalVerb_Preposition">
+      <End Role="Preposition" EntitySet="Prepositions" />
+      <End Role="PhrasalVerb" EntitySet="PhrasalVerbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhrasalVerb_Word" Association="DictionaryModel.FK_PhrasalVerb_Word">
+      <End Role="Word" EntitySet="Words" />
+      <End Role="PhrasalVerb" EntitySet="PhrasalVerbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrepositionMix_Word" Association="DictionaryModel.FK_PrepositionMix_Word">
+      <End Role="Word" EntitySet="Words" />
+      <End Role="PrepositionMix" EntitySet="PrepositionMixes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Word_SpeechPart" Association="DictionaryModel.FK_Word_SpeechPart">
+      <End Role="SpeechPart" EntitySet="SpeechParts" />
+      <End Role="Word" EntitySet="Words" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Word_Topic" Association="DictionaryModel.FK_Word_Topic">
+      <End Role="Topic" EntitySet="Topics" />
+      <End Role="Word" EntitySet="Words" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Variation_Word" Association="DictionaryModel.FK_Variation_Word">
+      <End Role="Word" EntitySet="Words" />
+      <End Role="Variation" EntitySet="Variations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Example_Meaning" Association="DictionaryModel.FK_Example_Meaning">
+      <End Role="WordMeaning" EntitySet="WordMeanings" />
+      <End Role="WordMeaningExample" EntitySet="WordMeaningExamples" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meaning_Word" Association="DictionaryModel.FK_Meaning_Word">
+      <End Role="Word" EntitySet="Words" />
+      <End Role="WordMeaning" EntitySet="WordMeanings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Words_GenericWord" Association="DictionaryModel.FK_Words_GenericWord">
+      <End Role="Word" EntitySet="Words" />
+      <End Role="Word1" EntitySet="Words" />
+    </AssociationSet>
+    <EntitySet Name="Collocations" EntityType="DictionaryModel.Collocation" />
+    <EntitySet Name="Idioms" EntityType="DictionaryModel.Idiom" />
+    <AssociationSet Name="FK_CollocationMix_Collocation" Association="DictionaryModel.FK_CollocationMix_Collocation">
+      <End Role="Collocation" EntitySet="Collocations" />
+      <End Role="CollocationMix" EntitySet="CollocationMixes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Collocations_Topics" Association="DictionaryModel.FK_Collocations_Topics">
+      <End Role="Topic" EntitySet="Topics" />
+      <End Role="Collocation" EntitySet="Collocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdiomMix_Idiom" Association="DictionaryModel.FK_IdiomMix_Idiom">
+      <End Role="Idiom" EntitySet="Idioms" />
+      <End Role="IdiomMix" EntitySet="IdiomMixes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Idioms_Topics" Association="DictionaryModel.FK_Idioms_Topics">
+      <End Role="Topic" EntitySet="Topics" />
+      <End Role="Idiom" EntitySet="Idioms" />
+    </AssociationSet>
+    <EntitySet Name="CollocationMeanings" EntityType="DictionaryModel.CollocationMeaning" />
+    <EntitySet Name="IdiomMeanings" EntityType="DictionaryModel.IdiomMeaning" />
+    <EntitySet Name="SynonymSets" EntityType="DictionaryModel.SynonymSet" />
+    <AssociationSet Name="FK_CollocationExamples_CollocationMeanings" Association="DictionaryModel.FK_CollocationExamples_CollocationMeanings">
+      <End Role="CollocationMeaning" EntitySet="CollocationMeanings" />
+      <End Role="CollocationMeaningExample" EntitySet="CollocationMeaningExamples" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CollocationMeanings_Collocations" Association="DictionaryModel.FK_CollocationMeanings_Collocations">
+      <End Role="Collocation" EntitySet="Collocations" />
+      <End Role="CollocationMeaning" EntitySet="CollocationMeanings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CollocationMeanings_SynonymSets" Association="DictionaryModel.FK_CollocationMeanings_SynonymSets">
+      <End Role="SynonymSet" EntitySet="SynonymSets" />
+      <End Role="CollocationMeaning" EntitySet="CollocationMeanings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdiomMeaningExamples_IdiomMeanings" Association="DictionaryModel.FK_IdiomMeaningExamples_IdiomMeanings">
+      <End Role="IdiomMeaning" EntitySet="IdiomMeanings" />
+      <End Role="IdiomMeaningExample" EntitySet="IdiomMeaningExamples" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdiomMeanings_Idioms" Association="DictionaryModel.FK_IdiomMeanings_Idioms">
+      <End Role="Idiom" EntitySet="Idioms" />
+      <End Role="IdiomMeaning" EntitySet="IdiomMeanings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdiomMeanings_SynonymSets" Association="DictionaryModel.FK_IdiomMeanings_SynonymSets">
+      <End Role="SynonymSet" EntitySet="SynonymSets" />
+      <End Role="IdiomMeaning" EntitySet="IdiomMeanings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhrasalVerbMeanings_SynonymSets" Association="DictionaryModel.FK_PhrasalVerbMeanings_SynonymSets">
+      <End Role="SynonymSet" EntitySet="SynonymSets" />
+      <End Role="PhrasalVerbMeaning" EntitySet="PhrasalVerbMeanings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WordMeanings_SynonymSets" Association="DictionaryModel.FK_WordMeanings_SynonymSets">
+      <End Role="SynonymSet" EntitySet="SynonymSets" />
+      <End Role="WordMeaning" EntitySet="WordMeanings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Collocations_Formality" Association="DictionaryModel.FK_Collocations_Formality">
+      <End Role="Formality" EntitySet="Formalities" />
+      <End Role="Collocation" EntitySet="Collocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Idioms_Formality" Association="DictionaryModel.FK_Idioms_Formality">
+      <End Role="Formality" EntitySet="Formalities" />
+      <End Role="Idiom" EntitySet="Idioms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhrasalVerbs_Formality" Association="DictionaryModel.FK_PhrasalVerbs_Formality">
+      <End Role="Formality" EntitySet="Formalities" />
+      <End Role="PhrasalVerb" EntitySet="PhrasalVerbs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CollocationMix">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_Word" Type="Int32" Nullable="false" />
+    <Property Name="IDF_Collocation" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Word" Relationship="DictionaryModel.FK_CollocationMix_Word" FromRole="CollocationMix" ToRole="Word" />
+    <NavigationProperty Name="Collocation" Relationship="DictionaryModel.FK_CollocationMix_Collocation" FromRole="CollocationMix" ToRole="Collocation" />
+  </EntityType>
+  <EntityType Name="IdiomMix">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_Word" Type="Int32" Nullable="false" />
+    <Property Name="IDF_Idiom" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Word" Relationship="DictionaryModel.FK_IdiomMix_Word" FromRole="IdiomMix" ToRole="Word" />
+    <NavigationProperty Name="Idiom" Relationship="DictionaryModel.FK_IdiomMix_Idiom" FromRole="IdiomMix" ToRole="Idiom" />
+  </EntityType>
+  <EntityType Name="PrepositionMixExample">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_PrepositionMix" Type="Int32" Nullable="false" />
+    <Property Name="Example" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="PrepositionMix" Relationship="DictionaryModel.FK_PrepositionExample_PrepositionMix" FromRole="PrepositionExample" ToRole="PrepositionMix" />
+  </EntityType>
+  <EntityType Name="PrepositionMix">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_Word" Type="Int32" Nullable="false" />
+    <Property Name="IDF_Preposition" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Examples" Relationship="DictionaryModel.FK_PrepositionExample_PrepositionMix" FromRole="PrepositionMix" ToRole="PrepositionExample" />
+    <NavigationProperty Name="Preposition" Relationship="DictionaryModel.FK_PrepositionMix_Preposition1" FromRole="PrepositionMix" ToRole="Preposition" />
+    <NavigationProperty Name="Word" Relationship="DictionaryModel.FK_PrepositionMix_Word" FromRole="PrepositionMix" ToRole="Word" />
+  </EntityType>
+  <EntityType Name="SpeechPart">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Type="String" Name="ShortName" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GrammarStructures" Relationship="DictionaryModel.FK_GrammarStructures_SpeechParts" FromRole="SpeechPart" ToRole="GrammarStructure" />
+    <NavigationProperty Name="Words" Relationship="DictionaryModel.FK_Word_SpeechPart" FromRole="SpeechPart" ToRole="Word" />
+  </EntityType>
+  <EntityType Name="Variation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_GrammarStructure" Type="Int32" Nullable="false" />
+    <Property Type="Int32" Name="IDF_Word" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GrammarStructure" Relationship="DictionaryModel.FK_Variation_GrammarStructure" FromRole="Variation" ToRole="GrammarStructure" />
+    <NavigationProperty Name="Word" Relationship="DictionaryModel.FK_Variation_Word" FromRole="Variation" ToRole="Word" />
+  </EntityType>
+  <Association Name="FK_PrepositionExample_PrepositionMix">
+    <End Role="PrepositionMix" Type="DictionaryModel.PrepositionMix" Multiplicity="1" />
+    <End Role="PrepositionExample" Type="DictionaryModel.PrepositionMixExample" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrepositionMix">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PrepositionExample">
+        <PropertyRef Name="IDF_PrepositionMix" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Topic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Words" Relationship="DictionaryModel.FK_Word_Topic" FromRole="Topic" ToRole="Word" />
+    <NavigationProperty Name="Collocations" Relationship="DictionaryModel.FK_Collocations_Topics" FromRole="Topic" ToRole="Collocation" />
+    <NavigationProperty Name="Idioms" Relationship="DictionaryModel.FK_Idioms_Topics" FromRole="Topic" ToRole="Idiom" />
+  </EntityType>
+  <EntityType Name="Preposition">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PrepositionMixes" Relationship="DictionaryModel.FK_PrepositionMix_Preposition1" FromRole="Preposition" ToRole="PrepositionMix" />
+    <NavigationProperty Name="PhrasalVerbs" Relationship="DictionaryModel.FK_PhrasalVerb_Preposition" FromRole="Preposition" ToRole="PhrasalVerb" />
+  </EntityType>
+  <Association Name="FK_PrepositionMix_Preposition1">
+    <End Type="DictionaryModel.Preposition" Role="Preposition" Multiplicity="1" />
+    <End Type="DictionaryModel.PrepositionMix" Role="PrepositionMix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Preposition">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PrepositionMix">
+        <PropertyRef Name="IDF_Preposition" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Countability">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Words" Relationship="DictionaryModel.FK_Words_Countability" FromRole="Countability" ToRole="Word" />
+  </EntityType>
+  <EntityType Name="Formality">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Words" Relationship="DictionaryModel.FK_Words_Formality" FromRole="Formality" ToRole="Word" />
+    <NavigationProperty Name="Collocations" Relationship="DictionaryModel.FK_Collocations_Formality" FromRole="Formality" ToRole="Collocation" />
+    <NavigationProperty Name="Idioms" Relationship="DictionaryModel.FK_Idioms_Formality" FromRole="Formality" ToRole="Idiom" />
+    <NavigationProperty Name="PhrasalVerbs" Relationship="DictionaryModel.FK_PhrasalVerbs_Formality" FromRole="Formality" ToRole="PhrasalVerb" />
+  </EntityType>
+  <EntityType Name="GrammarStructure">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="IDF_SpeechPart" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShortName" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SpeechPart" Relationship="DictionaryModel.FK_GrammarStructures_SpeechParts" FromRole="GrammarStructure" ToRole="SpeechPart" />
+    <NavigationProperty Name="Variations" Relationship="DictionaryModel.FK_Variation_GrammarStructure" FromRole="GrammarStructure" ToRole="Variation" />
+    <Property Name="IsAuxiliary" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_GrammarStructures_SpeechParts">
+    <End Type="DictionaryModel.SpeechPart" Role="SpeechPart" Multiplicity="1" />
+    <End Type="DictionaryModel.GrammarStructure" Role="GrammarStructure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpeechPart">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GrammarStructure">
+        <PropertyRef Name="IDF_SpeechPart" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Variation_GrammarStructure">
+    <End Type="DictionaryModel.GrammarStructure" Role="GrammarStructure" Multiplicity="1" />
+    <End Type="DictionaryModel.Variation" Role="Variation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GrammarStructure">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Variation">
+        <PropertyRef Name="IDF_GrammarStructure" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PhrasalVerbMeaningExample">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="IDF_PhrasalVerbMeaning" Nullable="false" />
+    <Property Type="String" Name="Example" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhrasalVerbMeaning" Relationship="DictionaryModel.FK_PhrasalVerbExample_PhrasalVerbMeaning" FromRole="PhrasalVerbMeaningExample" ToRole="PhrasalVerbMeaning" />
+  </EntityType>
+  <EntityType Name="WordMeaningExample">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="IDF_WordMeaning" Nullable="false" />
+    <Property Type="String" Name="Example" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="WordMeaning" Relationship="DictionaryModel.FK_Example_Meaning" FromRole="WordMeaningExample" ToRole="WordMeaning" />
+  </EntityType>
+  <EntityType Name="IdiomMeaningExample">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_IdiomMeaning" Type="Int32" Nullable="false" />
+    <Property Name="Example" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Meaning" Relationship="DictionaryModel.FK_IdiomMeaningExamples_IdiomMeanings" FromRole="IdiomMeaningExample" ToRole="IdiomMeaning" />
+  </EntityType>
+  <EntityType Name="CollocationMeaningExample">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_CollocationMeaning" Type="Int32" Nullable="false" />
+    <Property Name="Example" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Meaning" Relationship="DictionaryModel.FK_CollocationExamples_CollocationMeanings" FromRole="CollocationMeaningExample" ToRole="CollocationMeaning" />
+  </EntityType>
+  <EntityType Name="PhrasalVerbMeaning">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_PhrasalVerb" Type="Int32" Nullable="false" />
+    <Property Name="IDF_SynonymSet" Type="Int32" />
+    <Property Name="Meaning" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Examples" Relationship="DictionaryModel.FK_PhrasalVerbExample_PhrasalVerbMeaning" FromRole="PhrasalVerbMeaning" ToRole="PhrasalVerbMeaningExample" />
+    <NavigationProperty Name="PhrasalVerb" Relationship="DictionaryModel.FK_PhrasalVerbMeaning_PhrasalVerb" FromRole="PhrasalVerbMeaning" ToRole="PhrasalVerb" />
+    <NavigationProperty Name="SynonymSet" Relationship="DictionaryModel.FK_PhrasalVerbMeanings_SynonymSets" FromRole="PhrasalVerbMeaning" ToRole="SynonymSet" />
+  </EntityType>
+  <EntityType Name="PhrasalVerb">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_Verb" Type="Int32" Nullable="false" />
+    <Property Name="IDF_Preposition" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Meanings" Relationship="DictionaryModel.FK_PhrasalVerbMeaning_PhrasalVerb" FromRole="PhrasalVerb" ToRole="PhrasalVerbMeaning" />
+    <NavigationProperty Name="Preposition" Relationship="DictionaryModel.FK_PhrasalVerb_Preposition" FromRole="PhrasalVerb" ToRole="Preposition" />
+    <NavigationProperty Name="Verb" Relationship="DictionaryModel.FK_PhrasalVerb_Word" FromRole="PhrasalVerb" ToRole="Word" />
+    <Property Name="IDF_Formality" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Formality" Relationship="DictionaryModel.FK_PhrasalVerbs_Formality" FromRole="PhrasalVerb" ToRole="Formality" />
+  </EntityType>
+  <EntityType Name="WordMeaning">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_Word" Type="Int32" Nullable="false" />
+    <Property Name="IDF_SynonymSet" Type="Int32" />
+    <Property Name="Meaning" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Examples" Relationship="DictionaryModel.FK_Example_Meaning" FromRole="WordMeaning" ToRole="WordMeaningExample" />
+    <NavigationProperty Name="Word" Relationship="DictionaryModel.FK_Meaning_Word" FromRole="WordMeaning" ToRole="Word" />
+    <NavigationProperty Name="SynonymSet" Relationship="DictionaryModel.FK_WordMeanings_SynonymSets" FromRole="WordMeaning" ToRole="SynonymSet" />
+  </EntityType>
+  <EntityType Name="Word">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_SpeechPart" Type="Int32" Nullable="false" />
+    <Property Name="IDF_Topic" Type="Int32" Nullable="false" />
+    <Property Name="IDF_GenericWord" Type="Int32" />
+    <Property Name="IDF_Formality" Type="Int32" Nullable="false" />
+    <Property Name="IDF_Countability" Type="Int32" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="CollocationMixes" Relationship="DictionaryModel.FK_CollocationMix_Word" FromRole="Word" ToRole="CollocationMix" />
+    <NavigationProperty Name="Countability" Relationship="DictionaryModel.FK_Words_Countability" FromRole="Word" ToRole="Countability" />
+    <NavigationProperty Name="Formality" Relationship="DictionaryModel.FK_Words_Formality" FromRole="Word" ToRole="Formality" />
+    <NavigationProperty Name="IdiomMixes" Relationship="DictionaryModel.FK_IdiomMix_Word" FromRole="Word" ToRole="IdiomMix" />
+    <NavigationProperty Name="PhrasalVerbs" Relationship="DictionaryModel.FK_PhrasalVerb_Word" FromRole="Word" ToRole="PhrasalVerb" />
+    <NavigationProperty Name="PrepositionMixes" Relationship="DictionaryModel.FK_PrepositionMix_Word" FromRole="Word" ToRole="PrepositionMix" />
+    <NavigationProperty Name="SpeechPart" Relationship="DictionaryModel.FK_Word_SpeechPart" FromRole="Word" ToRole="SpeechPart" />
+    <NavigationProperty Name="Topic" Relationship="DictionaryModel.FK_Word_Topic" FromRole="Word" ToRole="Topic" />
+    <NavigationProperty Name="Variations" Relationship="DictionaryModel.FK_Variation_Word" FromRole="Word" ToRole="Variation" />
+    <NavigationProperty Name="Meanings" Relationship="DictionaryModel.FK_Meaning_Word" FromRole="Word" ToRole="WordMeaning" />
+    <NavigationProperty Name="Hyponyms" Relationship="DictionaryModel.FK_Words_GenericWord" FromRole="Word" ToRole="Word1" />
+    <NavigationProperty Name="GenericWord" Relationship="DictionaryModel.FK_Words_GenericWord" FromRole="Word1" ToRole="Word" />
+  </EntityType>
+  <Association Name="FK_CollocationMix_Word">
+    <End Type="DictionaryModel.Word" Role="Word" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.CollocationMix" Role="CollocationMix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Word">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CollocationMix">
+        <PropertyRef Name="IDF_Word" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Words_Countability">
+    <End Type="DictionaryModel.Countability" Role="Countability" Multiplicity="0..1" />
+    <End Type="DictionaryModel.Word" Role="Word" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countability">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Word">
+        <PropertyRef Name="IDF_Countability" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Words_Formality">
+    <End Type="DictionaryModel.Formality" Role="Formality" Multiplicity="1" />
+    <End Type="DictionaryModel.Word" Role="Word" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formality">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Word">
+        <PropertyRef Name="IDF_Formality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdiomMix_Word">
+    <End Type="DictionaryModel.Word" Role="Word" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.IdiomMix" Role="IdiomMix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Word">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IdiomMix">
+        <PropertyRef Name="IDF_Word" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhrasalVerbExample_PhrasalVerbMeaning">
+    <End Type="DictionaryModel.PhrasalVerbMeaning" Role="PhrasalVerbMeaning" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.PhrasalVerbMeaningExample" Role="PhrasalVerbMeaningExample" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhrasalVerbMeaning">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhrasalVerbMeaningExample">
+        <PropertyRef Name="IDF_PhrasalVerbMeaning" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhrasalVerbMeaning_PhrasalVerb">
+    <End Type="DictionaryModel.PhrasalVerb" Role="PhrasalVerb" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.PhrasalVerbMeaning" Role="PhrasalVerbMeaning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhrasalVerb">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhrasalVerbMeaning">
+        <PropertyRef Name="IDF_PhrasalVerb" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhrasalVerb_Preposition">
+    <End Type="DictionaryModel.Preposition" Role="Preposition" Multiplicity="1" />
+    <End Type="DictionaryModel.PhrasalVerb" Role="PhrasalVerb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Preposition">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhrasalVerb">
+        <PropertyRef Name="IDF_Preposition" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhrasalVerb_Word">
+    <End Type="DictionaryModel.Word" Role="Word" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.PhrasalVerb" Role="PhrasalVerb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Word">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhrasalVerb">
+        <PropertyRef Name="IDF_Verb" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrepositionMix_Word">
+    <End Type="DictionaryModel.Word" Role="Word" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.PrepositionMix" Role="PrepositionMix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Word">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PrepositionMix">
+        <PropertyRef Name="IDF_Word" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Word_SpeechPart">
+    <End Type="DictionaryModel.SpeechPart" Role="SpeechPart" Multiplicity="1" />
+    <End Type="DictionaryModel.Word" Role="Word" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpeechPart">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Word">
+        <PropertyRef Name="IDF_SpeechPart" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Word_Topic">
+    <End Type="DictionaryModel.Topic" Role="Topic" Multiplicity="1" />
+    <End Type="DictionaryModel.Word" Role="Word" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Topic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Word">
+        <PropertyRef Name="IDF_Topic" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Variation_Word">
+    <End Type="DictionaryModel.Word" Role="Word" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.Variation" Role="Variation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Word">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Variation">
+        <PropertyRef Name="IDF_Word" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Example_Meaning">
+    <End Type="DictionaryModel.WordMeaning" Role="WordMeaning" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.WordMeaningExample" Role="WordMeaningExample" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WordMeaning">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WordMeaningExample">
+        <PropertyRef Name="IDF_WordMeaning" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meaning_Word">
+    <End Type="DictionaryModel.Word" Role="Word" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.WordMeaning" Role="WordMeaning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Word">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WordMeaning">
+        <PropertyRef Name="IDF_Word" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Words_GenericWord">
+    <End Type="DictionaryModel.Word" Role="Word" Multiplicity="0..1" />
+    <End Type="DictionaryModel.Word" Role="Word1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Word">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Word1">
+        <PropertyRef Name="IDF_GenericWord" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Collocation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_Topic" Type="Int32" Nullable="false" />
+    <Property Name="IDF_SynonymSet" Type="Int32" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="CollocationMixes" Relationship="DictionaryModel.FK_CollocationMix_Collocation" FromRole="Collocation" ToRole="CollocationMix" />
+    <NavigationProperty Name="Topic" Relationship="DictionaryModel.FK_Collocations_Topics" FromRole="Collocation" ToRole="Topic" />
+    <NavigationProperty Name="Meanings" Relationship="DictionaryModel.FK_CollocationMeanings_Collocations" FromRole="Collocation" ToRole="CollocationMeaning" />
+    <Property Name="IDF_Formality" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Formality" Relationship="DictionaryModel.FK_Collocations_Formality" FromRole="Collocation" ToRole="Formality" />
+  </EntityType>
+  <EntityType Name="Idiom">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_Topic" Type="Int32" Nullable="false" />
+    <Property Name="IDF_SynonymSet" Type="Int32" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="IdiomMixes" Relationship="DictionaryModel.FK_IdiomMix_Idiom" FromRole="Idiom" ToRole="IdiomMix" />
+    <NavigationProperty Name="Topic" Relationship="DictionaryModel.FK_Idioms_Topics" FromRole="Idiom" ToRole="Topic" />
+    <NavigationProperty Name="Meanings" Relationship="DictionaryModel.FK_IdiomMeanings_Idioms" FromRole="Idiom" ToRole="IdiomMeaning" />
+    <Property Name="IDF_Formality" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Formality" Relationship="DictionaryModel.FK_Idioms_Formality" FromRole="Idiom" ToRole="Formality" />
+  </EntityType>
+  <Association Name="FK_CollocationMix_Collocation">
+    <End Type="DictionaryModel.Collocation" Role="Collocation" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.CollocationMix" Role="CollocationMix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Collocation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CollocationMix">
+        <PropertyRef Name="IDF_Collocation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Collocations_Topics">
+    <End Type="DictionaryModel.Topic" Role="Topic" Multiplicity="1" />
+    <End Type="DictionaryModel.Collocation" Role="Collocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Topic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Collocation">
+        <PropertyRef Name="IDF_Topic" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdiomMix_Idiom">
+    <End Type="DictionaryModel.Idiom" Role="Idiom" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.IdiomMix" Role="IdiomMix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IdiomMix">
+        <PropertyRef Name="IDF_Idiom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Idioms_Topics">
+    <End Type="DictionaryModel.Topic" Role="Topic" Multiplicity="1" />
+    <End Type="DictionaryModel.Idiom" Role="Idiom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Topic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Idiom">
+        <PropertyRef Name="IDF_Topic" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CollocationMeaning">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_Collocation" Type="Int32" Nullable="false" />
+    <Property Name="IDF_SynonymSet" Type="Int32" />
+    <Property Name="Meaning" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Examples" Relationship="DictionaryModel.FK_CollocationExamples_CollocationMeanings" FromRole="CollocationMeaning" ToRole="CollocationMeaningExample" />
+    <NavigationProperty Name="Collocation" Relationship="DictionaryModel.FK_CollocationMeanings_Collocations" FromRole="CollocationMeaning" ToRole="Collocation" />
+    <NavigationProperty Name="SynonymSet" Relationship="DictionaryModel.FK_CollocationMeanings_SynonymSets" FromRole="CollocationMeaning" ToRole="SynonymSet" />
+  </EntityType>
+  <EntityType Name="IdiomMeaning">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDF_Idiom" Type="Int32" Nullable="false" />
+    <Property Name="IDF_SynonymSet" Type="Int32" />
+    <Property Name="Meaning" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Examples" Relationship="DictionaryModel.FK_IdiomMeaningExamples_IdiomMeanings" FromRole="IdiomMeaning" ToRole="IdiomMeaningExample" />
+    <NavigationProperty Name="Idiom" Relationship="DictionaryModel.FK_IdiomMeanings_Idioms" FromRole="IdiomMeaning" ToRole="Idiom" />
+    <NavigationProperty Name="SynonymSet" Relationship="DictionaryModel.FK_IdiomMeanings_SynonymSets" FromRole="IdiomMeaning" ToRole="SynonymSet" />
+  </EntityType>
+  <EntityType Name="SynonymSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="CollocationMeanings" Relationship="DictionaryModel.FK_CollocationMeanings_SynonymSets" FromRole="SynonymSet" ToRole="CollocationMeaning" />
+    <NavigationProperty Name="IdiomMeanings" Relationship="DictionaryModel.FK_IdiomMeanings_SynonymSets" FromRole="SynonymSet" ToRole="IdiomMeaning" />
+    <NavigationProperty Name="PhrasalVerbMeanings" Relationship="DictionaryModel.FK_PhrasalVerbMeanings_SynonymSets" FromRole="SynonymSet" ToRole="PhrasalVerbMeaning" />
+    <NavigationProperty Name="WordMeanings" Relationship="DictionaryModel.FK_WordMeanings_SynonymSets" FromRole="SynonymSet" ToRole="WordMeaning" />
+  </EntityType>
+  <Association Name="FK_CollocationExamples_CollocationMeanings">
+    <End Type="DictionaryModel.CollocationMeaning" Role="CollocationMeaning" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.CollocationMeaningExample" Role="CollocationMeaningExample" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CollocationMeaning">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CollocationMeaningExample">
+        <PropertyRef Name="IDF_CollocationMeaning" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CollocationMeanings_Collocations">
+    <End Type="DictionaryModel.Collocation" Role="Collocation" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.CollocationMeaning" Role="CollocationMeaning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Collocation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CollocationMeaning">
+        <PropertyRef Name="IDF_Collocation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CollocationMeanings_SynonymSets">
+    <End Type="DictionaryModel.SynonymSet" Role="SynonymSet" Multiplicity="0..1" />
+    <End Type="DictionaryModel.CollocationMeaning" Role="CollocationMeaning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SynonymSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CollocationMeaning">
+        <PropertyRef Name="IDF_SynonymSet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdiomMeaningExamples_IdiomMeanings">
+    <End Type="DictionaryModel.IdiomMeaning" Role="IdiomMeaning" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.IdiomMeaningExample" Role="IdiomMeaningExample" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdiomMeaning">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IdiomMeaningExample">
+        <PropertyRef Name="IDF_IdiomMeaning" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdiomMeanings_Idioms">
+    <End Type="DictionaryModel.Idiom" Role="Idiom" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DictionaryModel.IdiomMeaning" Role="IdiomMeaning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Idiom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IdiomMeaning">
+        <PropertyRef Name="IDF_Idiom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdiomMeanings_SynonymSets">
+    <End Type="DictionaryModel.SynonymSet" Role="SynonymSet" Multiplicity="0..1" />
+    <End Type="DictionaryModel.IdiomMeaning" Role="IdiomMeaning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SynonymSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IdiomMeaning">
+        <PropertyRef Name="IDF_SynonymSet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhrasalVerbMeanings_SynonymSets">
+    <End Type="DictionaryModel.SynonymSet" Role="SynonymSet" Multiplicity="0..1" />
+    <End Type="DictionaryModel.PhrasalVerbMeaning" Role="PhrasalVerbMeaning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SynonymSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhrasalVerbMeaning">
+        <PropertyRef Name="IDF_SynonymSet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WordMeanings_SynonymSets">
+    <End Type="DictionaryModel.SynonymSet" Role="SynonymSet" Multiplicity="0..1" />
+    <End Type="DictionaryModel.WordMeaning" Role="WordMeaning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SynonymSet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WordMeaning">
+        <PropertyRef Name="IDF_SynonymSet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Collocations_Formality">
+    <End Type="DictionaryModel.Formality" Role="Formality" Multiplicity="1" />
+    <End Type="DictionaryModel.Collocation" Role="Collocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formality">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Collocation">
+        <PropertyRef Name="IDF_Formality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Idioms_Formality">
+    <End Type="DictionaryModel.Formality" Role="Formality" Multiplicity="1" />
+    <End Type="DictionaryModel.Idiom" Role="Idiom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formality">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Idiom">
+        <PropertyRef Name="IDF_Formality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhrasalVerbs_Formality">
+    <End Type="DictionaryModel.Formality" Role="Formality" Multiplicity="1" />
+    <End Type="DictionaryModel.PhrasalVerb" Role="PhrasalVerb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formality">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhrasalVerb">
+        <PropertyRef Name="IDF_Formality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

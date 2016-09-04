@@ -1,0 +1,23 @@
+﻿<hr />
+<div class="pagination-container">
+    <input type="hidden" id="page" value="@Model.Page" />
+    <input type="hidden" id="item" value="@Model.Item" />
+
+    <ul class="pagination pull-right">
+        <li>
+            <a href="#/" aria-label="First" data-page="0">
+                <span class="fa fa-step-backward"></span>
+            </a>
+        </li>
+        @foreach (var i in Model.PagesToDisplay)
+        {
+            if (i == (Model.Page)) { <li class="item active"><a href="#/" data-page="@i">@(i + 1)</a></li> }
+            else { <li class="item"><a href="#/" data-page="@i">@(i + 1)</a></li> }
+        }
+        <li>
+            <a href="#/" aria-label="Last" data-page="@(Model.OverallPages - 1)">
+                <span class="fa fa-step-forward"></span>
+            </a>
+        </li>
+    </ul>
+</div>

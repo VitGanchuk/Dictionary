@@ -1,0 +1,259 @@
+﻿@using VitEgoDictionary.Models
+
+@model VitEgoDictionary.Models.ViewModels.ItemViewModel
+
+@{
+    Word word = Model.Item as Word;
+    ViewBag.Title = "VitEgo Dictionary" + (word == null ? String.Empty : (" | " + word.Name));
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="body">
+    <div id="body-title"><h1>Words</h1></div>
+    <hr />
+    <div id="body-body">
+
+        @{ Html.RenderAction("SearchPanelSimple", "Word"); }
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="dashboard text-right">
+                    <a href="@Url.Action("Create", "Word")">
+                        <span class="fa fa-plus-square-o fa-lg fa-fw"></span><span>Create</span>
+                    </a>
+                    @if(word != null) {
+                        <a href="@Url.Action("Edit", "Word", new { id = word.ID })">
+                            <span class="fa fa-edit fa-lg fa-fw"></span><span>Edit</span>
+                        </a>
+                        <a href="#/" data-toggle="modal" data-target="#modal-dialog" data-content="Are you sure you want to delete the word '@word.Name'?" 
+                            data-buttons="CloseConfirm" data-action="@Url.Action("Delete", "Word", new { id = word.ID })">
+                            <span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>
+                        </a>
+                    }
+                </div>
+
+                @if (word == null) {   
+                    <div>
+                        <h2>Search Results</h2>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="warning">Sorry, no results were found! Please try to search again with another parameters!</p>
+                    </div>
+                } else {
+                    <div>
+                        <h2>
+                            <span>@word.Name</span>
+                            <span class="note">@word.SpeechPart.Name</span>
+                            @if (word.IDF_Formality != 1) { <span class="note">@word.Formality.Name</span> }
+                            @if (word.Countability != null && word.Countability.ID != 1) { <span class="note">@word.Countability.Name</span> }
+                            <span class="topic note">(@word.Topic.Name)</span>
+                        </h2>
+                    </div>                     
+                    if (word.SimilarWords.Count() > 0) {
+                        <hr />
+                        <div>
+                            <h3>Similar Words</h3>
+                            <ul class="similar">
+                                <li>
+                                    @foreach (var similarWord in word.SimilarWords.OrderBy(i => i.SpeechPart.ID)) {         
+                                        <a href="@Url.Action("Item", "Word", new { id = similarWord.ID })">
+                                            @similarWord.Name                                                                                     
+                                            <span class="speech-part">@similarWord.SpeechPart.ShortName</span>
+                                        </a>
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                    }
+
+                    if (word.Variations.Count > 0) {
+                        <hr />
+                        <div>
+                            <h3>Other Forms</h3>
+                            <ul class="variation">
+                                @foreach (var variation in word.Variations.OrderBy(i => i.GrammarStructure.ID)) {
+                                    <li>
+                                        <span class="variation">@variation.Name</span>
+                                        <span class="grammar-structure">@variation.GrammarStructure.ShortName</span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+                    if (word.Meanings.Count > 0) {
+                        <hr />
+                        <div>
+                            <h3>Meanings</h3>
+                            <ol>
+                                @foreach (var meaning in word.Meanings.OrderBy(i => i.Meaning)) {
+                                    <li>
+                                        <span class="meaning">@meaning.Meaning</span>
+                                        <ul class="example-list">
+                                            @foreach (var example in meaning.Examples) {
+                                                <li>
+                                                    @foreach (var item in LexicalAnalyzer.Highlight(example.Example, word)) {
+                                                        <span class="@(item.IsHighlighted ? "highlighted" : "example")">@item.Text</span>
+                                                    }
+                                                </li>
+                                            }
+                                        </ul>
+                                        @if (meaning.SynonymSet != null) {
+                                            <div>
+                                                <ul class="synonym">
+                                                    <li><span class="synonym">Synonyms:</span></li>
+                                                    @foreach (var synonym in meaning.SynonymSet.WordMeanings.Where(i => i.IDF_Word != word.ID).
+                                                        Select(i => i.Word).Distinct().OrderBy(i => i.Name)) {
+                                                        <li>
+                                                            <a href="@Url.Action("Item", "Word", new { id = synonym.ID })">@synonym.Name
+                                                                <span class="speech-part">@synonym.SpeechPart.ShortName</span>
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                    @foreach (var synonym in meaning.SynonymSet.PhrasalVerbMeanings.                                                                            Select(i => i.PhrasalVerb).Distinct().OrderBy(i => i.Name)) {
+                                                        <li>
+                                                            <a href="@Url.Action("Item", "PhrasalVerb", new { id = synonym.ID })">@synonym.Name
+                                                                <span class="speech-part">@synonym.Verb.SpeechPart.ShortName</span>
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                    @foreach (var synonym in meaning.SynonymSet.CollocationMeanings.
+                                                        Select(i => i.Collocation).Distinct().OrderBy(i => i.Name)) {
+                                                        <li>
+                                                            <a href="@Url.Action("Item", "Collocation", new { id = synonym.ID })">@synonym.Name&nbsp;</a>
+                                                        </li>
+                                                    }
+                                                    @foreach (var synonym in meaning.SynonymSet.IdiomMeanings.
+                                                        Select(i => i.Idiom).Distinct().OrderBy(i => i.Name)) {
+                                                        <li>
+                                                            <a href="@Url.Action("Item", "Idiom", new { id = synonym.ID })">@synonym.Name&nbsp;</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        }
+                                    </li>
+                                }
+                            </ol>
+                        </div>
+                    }
+
+                    if (word.PrepositionMixes.Count > 0) {
+                        <hr />
+                        <div>
+                            <h3>Prepositions</h3>
+                            <ol>
+                                @foreach (var prepositionMix in word.PrepositionMixes.OrderBy(i => i.Preposition.Name)) {
+                                    <li>
+                                        <span class="preposition">@(prepositionMix.Word.Name + " " + prepositionMix.Preposition.Name)</span>
+                                        <ul class="example-list">
+                                            @foreach (var example in prepositionMix.Examples) {
+                                                <li>
+                                                    @foreach (var item in LexicalAnalyzer.Highlight(example.Example, prepositionMix)) {
+                                                        <span class="@(item.IsHighlighted ? "highlighted" : "example")">@item.Text</span>
+                                                    }
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li> 
+                                }
+                            </ol>
+                        </div>
+                    }
+
+                    if (word.GenericWord != null) {
+                        <hr />
+                        <div>
+                            <h3>General Word</h3>
+                            <ul class="hyponym">
+                                <li>
+                                    <a href="@Url.Action("Item", "Word", new { id = word.GenericWord.ID })">@word.GenericWord.Name 
+                                        <span class="speech-part">@word.GenericWord.SpeechPart.ShortName</span>
+                                    </a> 
+                                       
+                                </li>
+                            </ul>
+                        </div>
+                    }
+
+                    if (word.Hyponyms.Count() > 0) {
+                        <hr />
+                        <div>
+                            <h3>Hyponyms</h3>
+                            <ul class="hyponym">                        
+                                @foreach (var hyponym in word.Hyponyms.OrderBy(i => i.Name)) {
+                                    <li>
+                                        <a href="@Url.Action("Item", "Word", new { id = hyponym.ID })">@hyponym.Name
+                                            <span class="speech-part">@hyponym.SpeechPart.ShortName</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+                    if (word.PhrasalVerbs.Count > 0) {
+                        <hr />
+                        <div>
+                            <h3>Phrasal Verbs</h3>
+                            <ul class="phrasal-verb">
+                            @foreach (var phrasalVerb in word.PhrasalVerbs.OrderBy(i => i.Name)) {
+                                <li>
+                                    <a href="@Url.Action("Item", "PhrasalVerb", new { id = phrasalVerb.ID })">@phrasalVerb.Name
+                                        <span class="speech-part">@phrasalVerb.Verb.SpeechPart.ShortName</span>
+                                    </a>
+                                </li>
+                            }    
+                            </ul>
+                        </div>
+                    }
+
+                    if (word.CollocationMixes.Count > 0) { 
+                        <hr />
+                        <div>
+                            <h3>Phrases</h3>
+                            <ol>
+                                @foreach (var collocation in word.CollocationMixes.OrderBy(i => i.Collocation.Name)) {
+                                    <li>
+                                        <a href="@Url.Action("Item", "Collocation", new { id = collocation.Collocation.ID })">@collocation.Collocation.Name</a>
+                                        <ul class="meaning-list">
+                                            @foreach (var meaning in collocation.Collocation.Meanings) {
+                                                <li><span class="meaning">@meaning.Meaning</span></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            </ol>
+                        </div>
+                    }
+                    
+                    if (word.IdiomMixes.Count > 0) { 
+                        <hr />
+                        <div>
+                            <h3>Idioms</h3>
+                            <ol>
+                                @foreach (var idiom in word.IdiomMixes.OrderBy(i => i.Idiom.Name)) {
+                                    <li>
+                                        <a href="@Url.Action("Item", "Idiom", new { id = idiom.Idiom.ID })">@idiom.Idiom.Name</a>
+                                        <ul class="meaning-list">
+                                            @foreach (var meaning in idiom.Idiom.Meanings) {
+                                                <li><span class="meaning">@meaning.Meaning</span></li>
+                                            }
+                                        </ul>
+                                    </li> 
+                                }
+                            </ol>
+                        </div>
+                    }
+                }
+                <div>
+                    <hr />
+                    <div class="text-right">
+                        <a href="@Model.UrlReferrer" class="button button-primary">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

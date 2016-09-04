@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{98AE9A2C-30F5-40D2-812E-09742E78591E}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VitEgoDictionary</RootNamespace>
+    <AssemblyName>VitEgoDictionary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CollocationController.cs" />
+    <Compile Include="Controllers\DictionaryController.cs" />
+    <Compile Include="Controllers\PhrasalVerbController.cs" />
+    <Compile Include="Controllers\IdiomController.cs" />
+    <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WordController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DictionaryModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DictionaryModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Extensions\AjaxAuthorizeAttribute.cs" />
+    <Compile Include="Models\Extensions\MvcHtmlStringExtensions.cs" />
+    <Compile Include="Models\Parameters\AccountLoginParameter.cs" />
+    <Compile Include="Models\Parameters\AccountChangePasswordParameter.cs" />
+    <Compile Include="Models\Parameters\CollocationIdiomParameter.cs" />
+    <Compile Include="Models\Parameters\SynonymMeaningParameter.cs" />
+    <Compile Include="Models\Parameters\PhrasalVerbParameter.cs" />
+    <Compile Include="Models\Parameters\MixParameter.cs" />
+    <Compile Include="Models\Parameters\ItemListParameters.cs" />
+    <Compile Include="Models\Parameters\ExampleParameter.cs" />
+    <Compile Include="Models\Parameters\MeaningParameter.cs" />
+    <Compile Include="Models\Parameters\PrepositionMixParameter.cs" />
+    <Compile Include="Models\Parameters\VariationParameter.cs" />
+    <Compile Include="Models\Parameters\ItemParameter.cs" />
+    <Compile Include="Models\Parameters\WordParameter.cs" />
+    <Compile Include="Models\PartialClasses\PhrasalVerb.cs" />
+    <Compile Include="Models\PartialClasses\SynonymSet.cs" />
+    <Compile Include="Models\PartialClasses\Word.cs" />
+    <Compile Include="Models\Helpers\WordHelpers.cs" />
+    <Compile Include="Models\Utilities\Enums.cs" />
+    <Compile Include="Models\Utilities\LexicalItem.cs" />
+    <Compile Include="Models\Utilities\LexicalAnalyzer.cs" />
+    <Compile Include="Models\Utilities\Repository.cs" />
+    <Compile Include="Models\Utilities\Synonym.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ViewModels\AccountChangePasswordViewModel.cs" />
+    <Compile Include="Models\ViewModels\UrlReferrerViewModel.cs" />
+    <Compile Include="Models\ViewModels\ItemListViewModel.cs" />
+    <Compile Include="Models\ViewModels\ItemViewModel .cs" />
+    <Compile Include="Models\ViewModels\MasterLayoutViewModel.cs" />
+    <Compile Include="Models\ViewModels\EditItemViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Style\bootstrap-select.css" />
+    <Content Include="Content\Style\dictionary-shared.css" />
+    <Content Include="Content\Style\dictionary-search-panel.css" />
+    <Content Include="Content\Style\bootstrap.css" />
+    <Content Include="Content\Style\font-awesome.css" />
+    <Content Include="Content\Style\Fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Style\Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Style\owl.carousel.css" />
+    <Content Include="Content\Style\owl.theme.css" />
+    <Content Include="Content\Style\owl.transitions.css" />
+    <Content Include="Content\Style\Pics\aspnetmvc.jpg" />
+    <Content Include="Content\Style\Pics\dic_min.png" />
+    <Content Include="Content\Style\Pics\favicon.ico" />
+    <Content Include="Content\Style\Pics\flag.png" />
+    <Content Include="Content\Style\Pics\header.png" />
+    <Content Include="Content\Style\Pics\loader.gif" />
+    <Content Include="Content\Style\Pics\macmillan.jpg" />
+    <Content Include="Content\Style\Pics\processing.gif" />
+    <Content Include="Content\Style\Pics\stackoverflow.jpg" />
+    <Content Include="Content\Style\Pics\virtualacademy.jpg" />
+    <Content Include="Content\Style\Pics\vocabulary.jpg" />
+    <Content Include="Content\Style\typeahead.css" />
+    <Content Include="Content\Style\Pics\vitego_min.png" />
+    <Content Include="Content\Style\dictionary-master-layout.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap-checkbox.js" />
+    <Content Include="Scripts\bootstrap-select.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\dictionary-validate.js" />
+    <Content Include="Scripts\dictionary-shared-search-panel.js" />
+    <Content Include="Scripts\dictionary-collocation-search-panel.js" />
+    <Content Include="Scripts\dictionary-shared-idiom-collocation-create-edit.js" />
+    <Content Include="Scripts\dictionary-shared-create-edit.js" />
+    <Content Include="Scripts\dictionary-idiom-search-panel.js" />
+    <Content Include="Scripts\dictionary-account-change-password.js" />
+    <Content Include="Scripts\dictionary-master-layout.js" />
+    <Content Include="Scripts\dictionary-account-login.js" />
+    <Content Include="Scripts\dictionary-shared-phrasal-verb-create-edit.js" />
+    <Content Include="Scripts\dictionary-shared-list.js" />
+    <Content Include="Scripts\dictionary-shared-word-create-edit.js" />
+    <Content Include="Scripts\dictionary-phrasal-verb-search-panel.js" />
+    <Content Include="Scripts\dictionary-word-search-panel.js" />
+    <Content Include="Scripts\dictionary-dialogs.js" />
+    <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Scripts\jquery-1.11.2.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\owl.carousel.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Style\Fonts\fontawesome-webfont.eot" />
+    <None Include="Content\Style\Fonts\fontawesome-webfont.ttf" />
+    <None Include="Content\Style\Fonts\fontawesome-webfont.woff" />
+    <None Include="Content\Style\Fonts\FontAwesome.otf" />
+    <None Include="Content\Style\Fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Content\Style\Fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Content\Style\Fonts\glyphicons-halflings-regular.woff" />
+    <EntityDeploy Include="Models\DictionaryModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DictionaryModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Views\Word\SearchPanel.cshtml" />
+    <Content Include="Views\Word\Item.cshtml" />
+    <Content Include="Views\Word\Create.cshtml" />
+    <Content Include="Views\Word\Edit.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Idiom\Index.cshtml" />
+    <Content Include="Views\Shared\Pager.cshtml" />
+    <Content Include="Views\Idiom\SearchPanel.cshtml" />
+    <Content Include="Views\Idiom\Item.cshtml" />
+    <Content Include="Views\Idiom\Edit.cshtml" />
+    <Content Include="Views\Idiom\Create.cshtml" />
+    <Content Include="Views\Collocation\Index.cshtml" />
+    <Content Include="Views\Collocation\SearchPanel.cshtml" />
+    <Content Include="Views\Collocation\Item.cshtml" />
+    <Content Include="Views\Collocation\Edit.cshtml" />
+    <Content Include="Views\Collocation\Create.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\PhrasalVerb\Item.cshtml" />
+    <Content Include="Views\PhrasalVerb\Index.cshtml" />
+    <Content Include="Views\PhrasalVerb\SearchPanel.cshtml" />
+    <Content Include="Views\PhrasalVerb\Create.cshtml" />
+    <Content Include="Views\PhrasalVerb\Edit.cshtml" />
+    <Content Include="Views\Word\Index.cshtml" />
+    <Content Include="Models\Diagrams\ViewModelDiagram.cd" />
+    <Content Include="Models\Diagrams\ParameterDiagram.cd" />
+    <Content Include="Views\Word\SearchPanelSimple.cshtml" />
+    <Content Include="Views\PhrasalVerb\SearchPanelSimple.cshtml" />
+    <Content Include="Views\Idiom\SearchPanelSimple.cshtml" />
+    <Content Include="Views\Collocation\SearchPanelSimple.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>24817</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
