@@ -4,6 +4,7 @@
         <div id="simple-search-panel">
             @using (Html.BeginForm("Item", "Word", FormMethod.Get, new { id = "search-form" })) {
                 <label>Search</label>
+                <img id="search-processing" style="display:none" src="~/Content/Style/Pics/processing.gif" alt="processing..." />
                 @Html.TextBox("search", null, new { @class = "typeahead form-control", autocomplete = "off", db_id = "-1", db_item = "-1" })
             }
         </div>

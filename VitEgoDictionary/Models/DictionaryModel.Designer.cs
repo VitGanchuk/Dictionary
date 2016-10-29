@@ -23,10 +23,8 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_PrepositionMix_Preposition1", "Preposition", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.Preposition), "PrepositionMix", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.PrepositionMix), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_GrammarStructures_SpeechParts", "SpeechPart", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.SpeechPart), "GrammarStructure", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.GrammarStructure), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_Variation_GrammarStructure", "GrammarStructure", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.GrammarStructure), "Variation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.Variation), true)]
-[assembly: EdmRelationshipAttribute("DictionaryModel", "FK_CollocationMix_Word", "Word", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.Word), "CollocationMix", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.CollocationMix), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_Words_Countability", "Countability", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(VitEgoDictionary.Models.Countability), "Word", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.Word), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_Words_Formality", "Formality", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.Formality), "Word", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.Word), true)]
-[assembly: EdmRelationshipAttribute("DictionaryModel", "FK_IdiomMix_Word", "Word", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.Word), "IdiomMix", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.IdiomMix), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_PhrasalVerbExample_PhrasalVerbMeaning", "PhrasalVerbMeaning", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.PhrasalVerbMeaning), "PhrasalVerbMeaningExample", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.PhrasalVerbMeaningExample), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_PhrasalVerbMeaning_PhrasalVerb", "PhrasalVerb", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.PhrasalVerb), "PhrasalVerbMeaning", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.PhrasalVerbMeaning), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_PhrasalVerb_Preposition", "Preposition", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.Preposition), "PhrasalVerb", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.PhrasalVerb), true)]
@@ -38,9 +36,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_Example_Meaning", "WordMeaning", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.WordMeaning), "WordMeaningExample", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.WordMeaningExample), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_Meaning_Word", "Word", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.Word), "WordMeaning", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.WordMeaning), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_Words_GenericWord", "Word", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(VitEgoDictionary.Models.Word), "Word1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.Word), true)]
-[assembly: EdmRelationshipAttribute("DictionaryModel", "FK_CollocationMix_Collocation", "Collocation", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.Collocation), "CollocationMix", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.CollocationMix), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_Collocations_Topics", "Topic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.Topic), "Collocation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.Collocation), true)]
-[assembly: EdmRelationshipAttribute("DictionaryModel", "FK_IdiomMix_Idiom", "Idiom", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.Idiom), "IdiomMix", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.IdiomMix), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_Idioms_Topics", "Topic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.Topic), "Idiom", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.Idiom), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_CollocationExamples_CollocationMeanings", "CollocationMeaning", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.CollocationMeaning), "CollocationMeaningExample", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.CollocationMeaningExample), true)]
 [assembly: EdmRelationshipAttribute("DictionaryModel", "FK_CollocationMeanings_Collocations", "Collocation", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(VitEgoDictionary.Models.Collocation), "CollocationMeaning", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(VitEgoDictionary.Models.CollocationMeaning), true)]
@@ -103,38 +99,6 @@ namespace VitEgoDictionary.Models
         #endregion
     
         #region ObjectSet Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<CollocationMix> CollocationMixes
-        {
-            get
-            {
-                if ((_CollocationMixes == null))
-                {
-                    _CollocationMixes = base.CreateObjectSet<CollocationMix>("CollocationMixes");
-                }
-                return _CollocationMixes;
-            }
-        }
-        private ObjectSet<CollocationMix> _CollocationMixes;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<IdiomMix> IdiomMixes
-        {
-            get
-            {
-                if ((_IdiomMixes == null))
-                {
-                    _IdiomMixes = base.CreateObjectSet<IdiomMix>("IdiomMixes");
-                }
-                return _IdiomMixes;
-            }
-        }
-        private ObjectSet<IdiomMix> _IdiomMixes;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -491,22 +455,6 @@ namespace VitEgoDictionary.Models
         #endregion
 
         #region AddTo Methods
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the CollocationMixes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToCollocationMixes(CollocationMix collocationMix)
-        {
-            base.AddObject("CollocationMixes", collocationMix);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the IdiomMixes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToIdiomMixes(IdiomMix idiomMix)
-        {
-            base.AddObject("IdiomMixes", idiomMix);
-        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the PrepositionMixExamples EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -876,28 +824,6 @@ namespace VitEgoDictionary.Models
 
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DictionaryModel", "FK_CollocationMix_Collocation", "CollocationMix")]
-        public EntityCollection<CollocationMix> CollocationMixes
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CollocationMix>("DictionaryModel.FK_CollocationMix_Collocation", "CollocationMix");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CollocationMix>("DictionaryModel.FK_CollocationMix_Collocation", "CollocationMix", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1379,195 +1305,6 @@ namespace VitEgoDictionary.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CollocationMeaning>("DictionaryModel.FK_CollocationExamples_CollocationMeanings", "CollocationMeaning", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DictionaryModel", Name="CollocationMix")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class CollocationMix : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new CollocationMix object.
-        /// </summary>
-        /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="iDF_Word">Initial value of the IDF_Word property.</param>
-        /// <param name="iDF_Collocation">Initial value of the IDF_Collocation property.</param>
-        public static CollocationMix CreateCollocationMix(global::System.Int32 id, global::System.Int32 iDF_Word, global::System.Int32 iDF_Collocation)
-        {
-            CollocationMix collocationMix = new CollocationMix();
-            collocationMix.ID = id;
-            collocationMix.IDF_Word = iDF_Word;
-            collocationMix.IDF_Collocation = iDF_Collocation;
-            return collocationMix;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IDF_Word
-        {
-            get
-            {
-                return _IDF_Word;
-            }
-            set
-            {
-                OnIDF_WordChanging(value);
-                ReportPropertyChanging("IDF_Word");
-                _IDF_Word = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IDF_Word");
-                OnIDF_WordChanged();
-            }
-        }
-        private global::System.Int32 _IDF_Word;
-        partial void OnIDF_WordChanging(global::System.Int32 value);
-        partial void OnIDF_WordChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IDF_Collocation
-        {
-            get
-            {
-                return _IDF_Collocation;
-            }
-            set
-            {
-                OnIDF_CollocationChanging(value);
-                ReportPropertyChanging("IDF_Collocation");
-                _IDF_Collocation = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IDF_Collocation");
-                OnIDF_CollocationChanged();
-            }
-        }
-        private global::System.Int32 _IDF_Collocation;
-        partial void OnIDF_CollocationChanging(global::System.Int32 value);
-        partial void OnIDF_CollocationChanged();
-
-        #endregion
-
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DictionaryModel", "FK_CollocationMix_Word", "Word")]
-        public Word Word
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Word>("DictionaryModel.FK_CollocationMix_Word", "Word").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Word>("DictionaryModel.FK_CollocationMix_Word", "Word").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Word> WordReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Word>("DictionaryModel.FK_CollocationMix_Word", "Word");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Word>("DictionaryModel.FK_CollocationMix_Word", "Word", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DictionaryModel", "FK_CollocationMix_Collocation", "Collocation")]
-        public Collocation Collocation
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Collocation>("DictionaryModel.FK_CollocationMix_Collocation", "Collocation").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Collocation>("DictionaryModel.FK_CollocationMix_Collocation", "Collocation").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Collocation> CollocationReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Collocation>("DictionaryModel.FK_CollocationMix_Collocation", "Collocation");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Collocation>("DictionaryModel.FK_CollocationMix_Collocation", "Collocation", value);
                 }
             }
         }
@@ -2276,28 +2013,6 @@ namespace VitEgoDictionary.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DictionaryModel", "FK_IdiomMix_Idiom", "IdiomMix")]
-        public EntityCollection<IdiomMix> IdiomMixes
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<IdiomMix>("DictionaryModel.FK_IdiomMix_Idiom", "IdiomMix");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<IdiomMix>("DictionaryModel.FK_IdiomMix_Idiom", "IdiomMix", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DictionaryModel", "FK_Idioms_Topics", "Topic")]
         public Topic Topic
         {
@@ -2772,195 +2487,6 @@ namespace VitEgoDictionary.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<IdiomMeaning>("DictionaryModel.FK_IdiomMeaningExamples_IdiomMeanings", "IdiomMeaning", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DictionaryModel", Name="IdiomMix")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class IdiomMix : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new IdiomMix object.
-        /// </summary>
-        /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="iDF_Word">Initial value of the IDF_Word property.</param>
-        /// <param name="iDF_Idiom">Initial value of the IDF_Idiom property.</param>
-        public static IdiomMix CreateIdiomMix(global::System.Int32 id, global::System.Int32 iDF_Word, global::System.Int32 iDF_Idiom)
-        {
-            IdiomMix idiomMix = new IdiomMix();
-            idiomMix.ID = id;
-            idiomMix.IDF_Word = iDF_Word;
-            idiomMix.IDF_Idiom = iDF_Idiom;
-            return idiomMix;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IDF_Word
-        {
-            get
-            {
-                return _IDF_Word;
-            }
-            set
-            {
-                OnIDF_WordChanging(value);
-                ReportPropertyChanging("IDF_Word");
-                _IDF_Word = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IDF_Word");
-                OnIDF_WordChanged();
-            }
-        }
-        private global::System.Int32 _IDF_Word;
-        partial void OnIDF_WordChanging(global::System.Int32 value);
-        partial void OnIDF_WordChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IDF_Idiom
-        {
-            get
-            {
-                return _IDF_Idiom;
-            }
-            set
-            {
-                OnIDF_IdiomChanging(value);
-                ReportPropertyChanging("IDF_Idiom");
-                _IDF_Idiom = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IDF_Idiom");
-                OnIDF_IdiomChanged();
-            }
-        }
-        private global::System.Int32 _IDF_Idiom;
-        partial void OnIDF_IdiomChanging(global::System.Int32 value);
-        partial void OnIDF_IdiomChanged();
-
-        #endregion
-
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DictionaryModel", "FK_IdiomMix_Word", "Word")]
-        public Word Word
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Word>("DictionaryModel.FK_IdiomMix_Word", "Word").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Word>("DictionaryModel.FK_IdiomMix_Word", "Word").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Word> WordReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Word>("DictionaryModel.FK_IdiomMix_Word", "Word");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Word>("DictionaryModel.FK_IdiomMix_Word", "Word", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DictionaryModel", "FK_IdiomMix_Idiom", "Idiom")]
-        public Idiom Idiom
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Idiom>("DictionaryModel.FK_IdiomMix_Idiom", "Idiom").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Idiom>("DictionaryModel.FK_IdiomMix_Idiom", "Idiom").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Idiom> IdiomReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Idiom>("DictionaryModel.FK_IdiomMix_Idiom", "Idiom");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Idiom>("DictionaryModel.FK_IdiomMix_Idiom", "Idiom", value);
                 }
             }
         }
@@ -5064,28 +4590,6 @@ namespace VitEgoDictionary.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DictionaryModel", "FK_CollocationMix_Word", "CollocationMix")]
-        public EntityCollection<CollocationMix> CollocationMixes
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CollocationMix>("DictionaryModel.FK_CollocationMix_Word", "CollocationMix");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CollocationMix>("DictionaryModel.FK_CollocationMix_Word", "CollocationMix", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DictionaryModel", "FK_Words_Countability", "Countability")]
         public Countability Countability
         {
@@ -5152,28 +4656,6 @@ namespace VitEgoDictionary.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Formality>("DictionaryModel.FK_Words_Formality", "Formality", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DictionaryModel", "FK_IdiomMix_Word", "IdiomMix")]
-        public EntityCollection<IdiomMix> IdiomMixes
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<IdiomMix>("DictionaryModel.FK_IdiomMix_Word", "IdiomMix");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<IdiomMix>("DictionaryModel.FK_IdiomMix_Word", "IdiomMix", value);
                 }
             }
         }

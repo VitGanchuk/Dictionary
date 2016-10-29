@@ -22,14 +22,6 @@
           <Property Name="IDF_SynonymSet" Type="int" />
           <Property Name="Meaning" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="CollocationMixes">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IDF_Word" Type="int" Nullable="false" />
-          <Property Name="IDF_Collocation" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Collocations">
           <Key>
             <PropertyRef Name="ID" />
@@ -81,14 +73,6 @@
           <Property Name="IDF_Idiom" Type="int" Nullable="false" />
           <Property Name="IDF_SynonymSet" Type="int" />
           <Property Name="Meaning" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="IdiomMixes">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IDF_Word" Type="int" Nullable="false" />
-          <Property Name="IDF_Idiom" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Idioms">
           <Key>
@@ -251,34 +235,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CollocationMix_Collocation">
-          <End Role="Collocations" Type="Self.Collocations" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CollocationMixes" Type="Self.CollocationMixes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Collocations">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CollocationMixes">
-              <PropertyRef Name="IDF_Collocation" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CollocationMix_Word">
-          <End Role="Words" Type="Self.Words" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CollocationMixes" Type="Self.CollocationMixes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Words">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CollocationMixes">
-              <PropertyRef Name="IDF_Word" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Collocations_Formality">
           <End Role="Formality" Type="Self.Formality" Multiplicity="1" />
           <End Role="Collocations" Type="Self.Collocations" Multiplicity="*" />
@@ -366,34 +322,6 @@
             </Principal>
             <Dependent Role="IdiomMeanings">
               <PropertyRef Name="IDF_SynonymSet" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IdiomMix_Idiom">
-          <End Role="Idioms" Type="Self.Idioms" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="IdiomMixes" Type="Self.IdiomMixes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Idioms">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="IdiomMixes">
-              <PropertyRef Name="IDF_Idiom" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IdiomMix_Word">
-          <End Role="Words" Type="Self.Words" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="IdiomMixes" Type="Self.IdiomMixes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Words">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="IdiomMixes">
-              <PropertyRef Name="IDF_Word" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -654,14 +582,12 @@
         <EntityContainer Name="DictionaryModelStoreContainer">
           <EntitySet Name="CollocationMeaningExamples" EntityType="Self.CollocationMeaningExamples" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CollocationMeanings" EntityType="Self.CollocationMeanings" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CollocationMixes" EntityType="Self.CollocationMixes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Collocations" EntityType="Self.Collocations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Countability" EntityType="Self.Countability" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Formality" EntityType="Self.Formality" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GrammarStructures" EntityType="Self.GrammarStructures" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IdiomMeaningExamples" EntityType="Self.IdiomMeaningExamples" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IdiomMeanings" EntityType="Self.IdiomMeanings" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="IdiomMixes" EntityType="Self.IdiomMixes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Idioms" EntityType="Self.Idioms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhrasalVerbMeaningExamples" EntityType="Self.PhrasalVerbMeaningExamples" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhrasalVerbMeanings" EntityType="Self.PhrasalVerbMeanings" Schema="dbo" store:Type="Tables" />
@@ -687,14 +613,6 @@
           <AssociationSet Name="FK_CollocationMeanings_SynonymSets" Association="Self.FK_CollocationMeanings_SynonymSets">
             <End Role="SynonymSets" EntitySet="SynonymSets" />
             <End Role="CollocationMeanings" EntitySet="CollocationMeanings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CollocationMix_Collocation" Association="Self.FK_CollocationMix_Collocation">
-            <End Role="Collocations" EntitySet="Collocations" />
-            <End Role="CollocationMixes" EntitySet="CollocationMixes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CollocationMix_Word" Association="Self.FK_CollocationMix_Word">
-            <End Role="Words" EntitySet="Words" />
-            <End Role="CollocationMixes" EntitySet="CollocationMixes" />
           </AssociationSet>
           <AssociationSet Name="FK_Collocations_Formality" Association="Self.FK_Collocations_Formality">
             <End Role="Formality" EntitySet="Formality" />
@@ -723,14 +641,6 @@
           <AssociationSet Name="FK_IdiomMeanings_SynonymSets" Association="Self.FK_IdiomMeanings_SynonymSets">
             <End Role="SynonymSets" EntitySet="SynonymSets" />
             <End Role="IdiomMeanings" EntitySet="IdiomMeanings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IdiomMix_Idiom" Association="Self.FK_IdiomMix_Idiom">
-            <End Role="Idioms" EntitySet="Idioms" />
-            <End Role="IdiomMixes" EntitySet="IdiomMixes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IdiomMix_Word" Association="Self.FK_IdiomMix_Word">
-            <End Role="Words" EntitySet="Words" />
-            <End Role="IdiomMixes" EntitySet="IdiomMixes" />
           </AssociationSet>
           <AssociationSet Name="FK_Idioms_Formality" Association="Self.FK_Idioms_Formality">
             <End Role="Formality" EntitySet="Formality" />
@@ -818,8 +728,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="DictionaryModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="DictionaryEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CollocationMixes" EntityType="DictionaryModel.CollocationMix" />
-          <EntitySet Name="IdiomMixes" EntityType="DictionaryModel.IdiomMix" />
           <EntitySet Name="PrepositionMixExamples" EntityType="DictionaryModel.PrepositionMixExample" />
           <EntitySet Name="PrepositionMixes" EntityType="DictionaryModel.PrepositionMix" />
           <EntitySet Name="SpeechParts" EntityType="DictionaryModel.SpeechPart" />
@@ -853,10 +761,6 @@
           <EntitySet Name="PhrasalVerbs" EntityType="DictionaryModel.PhrasalVerb" />
           <EntitySet Name="WordMeanings" EntityType="DictionaryModel.WordMeaning" />
           <EntitySet Name="Words" EntityType="DictionaryModel.Word" />
-          <AssociationSet Name="FK_CollocationMix_Word" Association="DictionaryModel.FK_CollocationMix_Word">
-            <End Role="Word" EntitySet="Words" />
-            <End Role="CollocationMix" EntitySet="CollocationMixes" />
-          </AssociationSet>
           <AssociationSet Name="FK_Words_Countability" Association="DictionaryModel.FK_Words_Countability">
             <End Role="Countability" EntitySet="Countabilities" />
             <End Role="Word" EntitySet="Words" />
@@ -864,10 +768,6 @@
           <AssociationSet Name="FK_Words_Formality" Association="DictionaryModel.FK_Words_Formality">
             <End Role="Formality" EntitySet="Formalities" />
             <End Role="Word" EntitySet="Words" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IdiomMix_Word" Association="DictionaryModel.FK_IdiomMix_Word">
-            <End Role="Word" EntitySet="Words" />
-            <End Role="IdiomMix" EntitySet="IdiomMixes" />
           </AssociationSet>
           <AssociationSet Name="FK_PhrasalVerbExample_PhrasalVerbMeaning" Association="DictionaryModel.FK_PhrasalVerbExample_PhrasalVerbMeaning">
             <End Role="PhrasalVerbMeaning" EntitySet="PhrasalVerbMeanings" />
@@ -915,17 +815,9 @@
           </AssociationSet>
           <EntitySet Name="Collocations" EntityType="DictionaryModel.Collocation" />
           <EntitySet Name="Idioms" EntityType="DictionaryModel.Idiom" />
-          <AssociationSet Name="FK_CollocationMix_Collocation" Association="DictionaryModel.FK_CollocationMix_Collocation">
-            <End Role="Collocation" EntitySet="Collocations" />
-            <End Role="CollocationMix" EntitySet="CollocationMixes" />
-          </AssociationSet>
           <AssociationSet Name="FK_Collocations_Topics" Association="DictionaryModel.FK_Collocations_Topics">
             <End Role="Topic" EntitySet="Topics" />
             <End Role="Collocation" EntitySet="Collocations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IdiomMix_Idiom" Association="DictionaryModel.FK_IdiomMix_Idiom">
-            <End Role="Idiom" EntitySet="Idioms" />
-            <End Role="IdiomMix" EntitySet="IdiomMixes" />
           </AssociationSet>
           <AssociationSet Name="FK_Idioms_Topics" Association="DictionaryModel.FK_Idioms_Topics">
             <End Role="Topic" EntitySet="Topics" />
@@ -979,26 +871,6 @@
             <End Role="PhrasalVerb" EntitySet="PhrasalVerbs" />
           </AssociationSet>
           </EntityContainer>
-        <EntityType Name="CollocationMix">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDF_Word" Type="Int32" Nullable="false" />
-          <Property Name="IDF_Collocation" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Word" Relationship="DictionaryModel.FK_CollocationMix_Word" FromRole="CollocationMix" ToRole="Word" />
-          <NavigationProperty Name="Collocation" Relationship="DictionaryModel.FK_CollocationMix_Collocation" FromRole="CollocationMix" ToRole="Collocation" />
-        </EntityType>
-        <EntityType Name="IdiomMix">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDF_Word" Type="Int32" Nullable="false" />
-          <Property Name="IDF_Idiom" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Word" Relationship="DictionaryModel.FK_IdiomMix_Word" FromRole="IdiomMix" ToRole="Word" />
-          <NavigationProperty Name="Idiom" Relationship="DictionaryModel.FK_IdiomMix_Idiom" FromRole="IdiomMix" ToRole="Idiom" />
-        </EntityType>
         <EntityType Name="PrepositionMixExample">
           <Key>
             <PropertyRef Name="ID" />
@@ -1224,10 +1096,8 @@
           <Property Name="IDF_Countability" Type="Int32" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="CollocationMixes" Relationship="DictionaryModel.FK_CollocationMix_Word" FromRole="Word" ToRole="CollocationMix" />
           <NavigationProperty Name="Countability" Relationship="DictionaryModel.FK_Words_Countability" FromRole="Word" ToRole="Countability" />
           <NavigationProperty Name="Formality" Relationship="DictionaryModel.FK_Words_Formality" FromRole="Word" ToRole="Formality" />
-          <NavigationProperty Name="IdiomMixes" Relationship="DictionaryModel.FK_IdiomMix_Word" FromRole="Word" ToRole="IdiomMix" />
           <NavigationProperty Name="PhrasalVerbs" Relationship="DictionaryModel.FK_PhrasalVerb_Word" FromRole="Word" ToRole="PhrasalVerb" />
           <NavigationProperty Name="PrepositionMixes" Relationship="DictionaryModel.FK_PrepositionMix_Word" FromRole="Word" ToRole="PrepositionMix" />
           <NavigationProperty Name="SpeechPart" Relationship="DictionaryModel.FK_Word_SpeechPart" FromRole="Word" ToRole="SpeechPart" />
@@ -1237,20 +1107,6 @@
           <NavigationProperty Name="Hyponyms" Relationship="DictionaryModel.FK_Words_GenericWord" FromRole="Word" ToRole="Word1" />
           <NavigationProperty Name="GenericWord" Relationship="DictionaryModel.FK_Words_GenericWord" FromRole="Word1" ToRole="Word" />
         </EntityType>
-        <Association Name="FK_CollocationMix_Word">
-          <End Type="DictionaryModel.Word" Role="Word" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DictionaryModel.CollocationMix" Role="CollocationMix" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Word">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CollocationMix">
-              <PropertyRef Name="IDF_Word" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Words_Countability">
           <End Type="DictionaryModel.Countability" Role="Countability" Multiplicity="0..1" />
           <End Type="DictionaryModel.Word" Role="Word" Multiplicity="*" />
@@ -1272,20 +1128,6 @@
             </Principal>
             <Dependent Role="Word">
               <PropertyRef Name="IDF_Formality" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IdiomMix_Word">
-          <End Type="DictionaryModel.Word" Role="Word" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DictionaryModel.IdiomMix" Role="IdiomMix" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Word">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="IdiomMix">
-              <PropertyRef Name="IDF_Word" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1444,7 +1286,6 @@
           <Property Name="IDF_SynonymSet" Type="Int32" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="CollocationMixes" Relationship="DictionaryModel.FK_CollocationMix_Collocation" FromRole="Collocation" ToRole="CollocationMix" />
           <NavigationProperty Name="Topic" Relationship="DictionaryModel.FK_Collocations_Topics" FromRole="Collocation" ToRole="Topic" />
           <NavigationProperty Name="Meanings" Relationship="DictionaryModel.FK_CollocationMeanings_Collocations" FromRole="Collocation" ToRole="CollocationMeaning" />
           <Property Name="IDF_Formality" Type="Int32" Nullable="false" />
@@ -1459,26 +1300,11 @@
           <Property Name="IDF_SynonymSet" Type="Int32" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="IdiomMixes" Relationship="DictionaryModel.FK_IdiomMix_Idiom" FromRole="Idiom" ToRole="IdiomMix" />
           <NavigationProperty Name="Topic" Relationship="DictionaryModel.FK_Idioms_Topics" FromRole="Idiom" ToRole="Topic" />
           <NavigationProperty Name="Meanings" Relationship="DictionaryModel.FK_IdiomMeanings_Idioms" FromRole="Idiom" ToRole="IdiomMeaning" />
           <Property Name="IDF_Formality" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Formality" Relationship="DictionaryModel.FK_Idioms_Formality" FromRole="Idiom" ToRole="Formality" />
         </EntityType>
-        <Association Name="FK_CollocationMix_Collocation">
-          <End Type="DictionaryModel.Collocation" Role="Collocation" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DictionaryModel.CollocationMix" Role="CollocationMix" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Collocation">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CollocationMix">
-              <PropertyRef Name="IDF_Collocation" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Collocations_Topics">
           <End Type="DictionaryModel.Topic" Role="Topic" Multiplicity="1" />
           <End Type="DictionaryModel.Collocation" Role="Collocation" Multiplicity="*" />
@@ -1488,20 +1314,6 @@
             </Principal>
             <Dependent Role="Collocation">
               <PropertyRef Name="IDF_Topic" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IdiomMix_Idiom">
-          <End Type="DictionaryModel.Idiom" Role="Idiom" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DictionaryModel.IdiomMix" Role="IdiomMix" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Idiom">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="IdiomMix">
-              <PropertyRef Name="IDF_Idiom" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1697,24 +1509,6 @@
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DictionaryModelStoreContainer" CdmEntityContainer="DictionaryEntities">
-    <EntitySetMapping Name="CollocationMixes">
-      <EntityTypeMapping TypeName="IsTypeOf(DictionaryModel.CollocationMix)">
-        <MappingFragment StoreEntitySet="CollocationMixes">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="IDF_Word" ColumnName="IDF_Word" />
-          <ScalarProperty Name="IDF_Collocation" ColumnName="IDF_Collocation" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="IdiomMixes">
-      <EntityTypeMapping TypeName="IsTypeOf(DictionaryModel.IdiomMix)">
-        <MappingFragment StoreEntitySet="IdiomMixes">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="IDF_Word" ColumnName="IDF_Word" />
-          <ScalarProperty Name="IDF_Idiom" ColumnName="IDF_Idiom" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PrepositionMixExamples">
       <EntityTypeMapping TypeName="IsTypeOf(DictionaryModel.PrepositionMixExample)">
         <MappingFragment StoreEntitySet="PrepositionExamples">
@@ -1948,8 +1742,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="DictionaryModel" ZoomLevel="97">
-        <EntityTypeShape EntityType="DictionaryModel.CollocationMix" Width="2.125" PointX="12.5" PointY="4" Height="1.9802864583333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="DictionaryModel.IdiomMix" Width="2.25" PointX="10.25" PointY="0.875" Height="1.9802864583333317" IsExpanded="true" />
         <EntityTypeShape EntityType="DictionaryModel.PrepositionMixExample" Width="2.375" PointX="0.5" PointY="10.5" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="DictionaryModel.PrepositionMix" Width="2.375" PointX="0.5" PointY="7.875" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="DictionaryModel.SpeechPart" Width="2.375" PointX="0.5" PointY="5.625" Height="1.7879850260416665" IsExpanded="true" />
@@ -1962,29 +1754,27 @@
           <ConnectorPoint PointX="1.375" PointY="10.5" />
           <ConnectorPoint PointX="1.375" PointY="10.037985026041667" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DictionaryModel.Topic" Width="2.375" PointX="6.375" PointY="0.5" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="DictionaryModel.Topic" Width="2.375" PointX="9.25" PointY="0.5" Height="1.5956835937500031" />
         <EntityTypeShape EntityType="DictionaryModel.Preposition" Width="2.375" PointX="0.5" PointY="12.875" Height="1.9802864583333282" />
         <AssociationConnector Association="DictionaryModel.FK_PrepositionMix_Preposition1" >
           <ConnectorPoint PointX="1.375" PointY="13.5" />
           <ConnectorPoint PointX="1.375" PointY="12.672587890625" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DictionaryModel.Countability" Width="1.875" PointX="3.5" PointY="0.5" />
-        <EntityTypeShape EntityType="DictionaryModel.Formality" Width="1.875" PointX="3.875" PointY="2.625" />
+        <EntityTypeShape EntityType="DictionaryModel.Countability" Width="1.875" PointX="9.625" PointY="5.625" />
+        <EntityTypeShape EntityType="DictionaryModel.Formality" Width="1.875" PointX="6.125" PointY="0.5" />
         <EntityTypeShape EntityType="DictionaryModel.GrammarStructure" Width="2.375" PointX="0.5" PointY="0.5" />
         <AssociationConnector Association="DictionaryModel.FK_GrammarStructures_SpeechParts" />
         <AssociationConnector Association="DictionaryModel.FK_Variation_GrammarStructure" />
         <EntityTypeShape EntityType="DictionaryModel.PhrasalVerbMeaningExample" Width="2.25" PointX="9.5" PointY="13.375" />
-        <EntityTypeShape EntityType="DictionaryModel.WordMeaningExample" Width="1.875" PointX="4.125" PointY="9.25" />
-        <EntityTypeShape EntityType="DictionaryModel.IdiomMeaningExample" Width="2.375" PointX="12.375" PointY="7.375" />
+        <EntityTypeShape EntityType="DictionaryModel.WordMeaningExample" Width="1.875" PointX="3.5" PointY="9.5" />
+        <EntityTypeShape EntityType="DictionaryModel.IdiomMeaningExample" Width="2.375" PointX="12.375" PointY="7.625" />
         <EntityTypeShape EntityType="DictionaryModel.CollocationMeaningExample" Width="2.375" PointX="12.375" PointY="13.25" />
         <EntityTypeShape EntityType="DictionaryModel.PhrasalVerbMeaning" Width="2.125" PointX="6.25" PointY="12.375" />
         <EntityTypeShape EntityType="DictionaryModel.PhrasalVerb" Width="2.125" PointX="3.5" PointY="12.375" />
         <EntityTypeShape EntityType="DictionaryModel.WordMeaning" Width="1.875" PointX="6.375" PointY="9.25" />
-        <EntityTypeShape EntityType="DictionaryModel.Word" Width="2.375" PointX="6.25" PointY="3.75" />
-        <AssociationConnector Association="DictionaryModel.FK_CollocationMix_Word" />
+        <EntityTypeShape EntityType="DictionaryModel.Word" Width="2.375" PointX="5.125" PointY="3.875" />
         <AssociationConnector Association="DictionaryModel.FK_Words_Countability" />
         <AssociationConnector Association="DictionaryModel.FK_Words_Formality" />
-        <AssociationConnector Association="DictionaryModel.FK_IdiomMix_Word" />
         <AssociationConnector Association="DictionaryModel.FK_PhrasalVerbExample_PhrasalVerbMeaning" />
         <AssociationConnector Association="DictionaryModel.FK_PhrasalVerbMeaning_PhrasalVerb" />
         <AssociationConnector Association="DictionaryModel.FK_PhrasalVerb_Preposition" />
@@ -1997,10 +1787,8 @@
         <AssociationConnector Association="DictionaryModel.FK_Meaning_Word" />
         <AssociationConnector Association="DictionaryModel.FK_Words_GenericWord" />
         <EntityTypeShape EntityType="DictionaryModel.Collocation" Width="2.125" PointX="12.875" PointY="0.5" />
-        <EntityTypeShape EntityType="DictionaryModel.Idiom" Width="2.25" PointX="9.5" PointY="4.25" />
-        <AssociationConnector Association="DictionaryModel.FK_CollocationMix_Collocation" />
+        <EntityTypeShape EntityType="DictionaryModel.Idiom" Width="2.25" PointX="12.75" PointY="4" />
         <AssociationConnector Association="DictionaryModel.FK_Collocations_Topics" />
-        <AssociationConnector Association="DictionaryModel.FK_IdiomMix_Idiom" />
         <AssociationConnector Association="DictionaryModel.FK_Idioms_Topics" />
         <EntityTypeShape EntityType="DictionaryModel.CollocationMeaning" Width="2.375" PointX="12.375" PointY="9.875" />
         <EntityTypeShape EntityType="DictionaryModel.IdiomMeaning" Width="2.25" PointX="9.5" PointY="7.625" />

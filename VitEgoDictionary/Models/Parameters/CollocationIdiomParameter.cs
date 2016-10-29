@@ -17,10 +17,5 @@ namespace VitEgoDictionary.Models.Parameters
         /// </summary>
         [Required]
         public string Name { get; set; }
-        
-        /// <summary>
-        /// Collocation or Idiom collection of associated words.
-        /// </summary>
-        public IEnumerable<MixParameter> Mixes { get; set; }
     }
 }

@@ -27,6 +27,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-lg-6 form-group">
                                 <label>Base Verb</label>
+                                <img id="base-verb-processing" style="display:none" src="~/Content/Style/Pics/processing.gif" alt="processing..." />
                                 @Html.TextBox("base-verb", null, new { @class = "inner form-control required", autocomplete = "off", db_id = "-1" })
                                 @Html.Hidden("phrasal-verb-id", -1)
                                 @Html.Hidden("speech-part", 2)

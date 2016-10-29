@@ -209,16 +209,16 @@
                         </div>
                     }
 
-                    if (word.CollocationMixes.Count > 0) { 
+                    if (word.Collocations.Count() > 0) { 
                         <hr />
                         <div>
-                            <h3>Phrases</h3>
+                            <h3>Collocations</h3>
                             <ol>
-                                @foreach (var collocation in word.CollocationMixes.OrderBy(i => i.Collocation.Name)) {
+                                @foreach (var collocation in word.Collocations.OrderBy(i => i.Name)) {
                                     <li>
-                                        <a href="@Url.Action("Item", "Collocation", new { id = collocation.Collocation.ID })">@collocation.Collocation.Name</a>
+                                        <a href="@Url.Action("Item", "Collocation", new { id = collocation.ID })">@collocation.Name</a>
                                         <ul class="meaning-list">
-                                            @foreach (var meaning in collocation.Collocation.Meanings) {
+                                            @foreach (var meaning in collocation.Meanings) {
                                                 <li><span class="meaning">@meaning.Meaning</span></li>
                                             }
                                         </ul>
@@ -228,16 +228,16 @@
                         </div>
                     }
                     
-                    if (word.IdiomMixes.Count > 0) { 
+                    if (word.Idioms.Count() > 0) { 
                         <hr />
                         <div>
                             <h3>Idioms</h3>
                             <ol>
-                                @foreach (var idiom in word.IdiomMixes.OrderBy(i => i.Idiom.Name)) {
+                                @foreach (var idiom in word.Idioms.OrderBy(i => i.Name)) {
                                     <li>
-                                        <a href="@Url.Action("Item", "Idiom", new { id = idiom.Idiom.ID })">@idiom.Idiom.Name</a>
+                                        <a href="@Url.Action("Item", "Idiom", new { id = idiom.ID })">@idiom.Name</a>
                                         <ul class="meaning-list">
-                                            @foreach (var meaning in idiom.Idiom.Meanings) {
+                                            @foreach (var meaning in idiom.Meanings) {
                                                 <li><span class="meaning">@meaning.Meaning</span></li>
                                             }
                                         </ul>

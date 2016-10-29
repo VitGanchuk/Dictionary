@@ -1,5 +1,8 @@
 ﻿//  Data retrieving and element initializing
 $(function () {
+
+    $('#base-verb-processing').show();
+
     var baseVerbs = new Bloodhound({
         datumTokenizer: function (datum) {
             return Bloodhound.tokenizers.whitespace(datum.name);
@@ -10,6 +13,7 @@ $(function () {
             url: '/Data/Words/?speechPart=' + speechPart,
             cache: false,
             filter: function (list) {
+                $('#base-verb-processing').hide();
                 return $.map(list, function (item) {
                     return {
                         id: item.id,

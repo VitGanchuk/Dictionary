@@ -29,6 +29,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-lg-6 form-group">
                                 <label>Base Verb</label>
+                                <img id="base-verb-processing" style="display:none" src="~/Content/Style/Pics/processing.gif" alt="processing..." />
                                 @Html.TextBox("base-verb", phrasalVerb.Verb.Name, new { @class = "typeahead form-control required", 
                                     autocomplete = "off", db_id = phrasalVerb.Verb.ID })
                                 @Html.Hidden("phrasal-verb-id", phrasalVerb.ID)

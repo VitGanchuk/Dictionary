@@ -105,16 +105,16 @@
                         </div>
                     }
                     
-                    if (idiom.IdiomMixes.Count > 0) {
+                    if (idiom.AssociatedWords.Count() > 0) {
                         <hr />
                         <div>
                             <h3>Associated Words</h3>
                             <ul class="synonym">                                 
-                                @foreach (var idiomMix in idiom.IdiomMixes.OrderBy(i => i.Word.Name)) {
+                                @foreach (var word in idiom.AssociatedWords.OrderBy(i => i.Name)) {
                                     <li>
-                                        <a href="@Url.Action("Item", "Word", new { id = idiomMix.Word.ID })">
-                                            @idiomMix.Word.Name
-                                            <span class="speech-part">@idiomMix.Word.SpeechPart.ShortName</span>
+                                        <a href="@Url.Action("Item", "Word", new { id = word.ID })">
+                                            @word.Name
+                                            <span class="speech-part">@word.SpeechPart.ShortName</span>
                                         </a>
                                     </li>
                                 }

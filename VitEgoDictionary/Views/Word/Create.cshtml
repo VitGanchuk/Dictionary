@@ -27,6 +27,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-9 form-group">
                                 <label class="required">Word</label>
+                                <img id="base-word-processing" style="display:none" src="~/Content/Style/Pics/processing.gif" alt="processing..." />
                                 @Html.TextBox("base-word", null, new { @class = "form-control", autocomplete = "off", db_id = "-1" })
                                 @Html.Hidden("url", "/Word/Create")
                             </div>

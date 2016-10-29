@@ -10,6 +10,7 @@
                 <a href="#/" id="advanced-search-open" class="inner pull-right">
                     <span class="fa fa-search-plus fa-fw"></span>
                 </a>
+                <img id="search-processing" style="display:none" src="~/Content/Style/Pics/processing.gif" alt="processing..." />
                 @Html.TextBox("search", null, new { @class = "typeahead form-control", autocomplete = "off", db_id = "-1" })
             }
         </div>

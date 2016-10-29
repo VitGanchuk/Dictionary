@@ -8,7 +8,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div id="body">
-    <div id="body-title"><h1>Phrases</h1></div>
+    <div id="body-title"><h1>Collocations</h1></div>
     <hr />
     <div id="body-body">
 
@@ -105,16 +105,16 @@
                         </div>
                     }
                     
-                    if (collocation.CollocationMixes.Count > 0) {
+                    if (collocation.AssociatedWords.Count() > 0) {
                         <hr />
                         <div>
                             <h3>Associated Words</h3>
                             <ul class="synonym">                                 
-                                @foreach (var collocationMix in collocation.CollocationMixes.OrderBy(i => i.Word.Name)) {
+                                @foreach (var word in collocation.AssociatedWords.OrderBy(i => i.Name)) {
                                     <li>
-                                        <a href="@Url.Action("Item", "Word", new { id = collocationMix.Word.ID })">
-                                            @collocationMix.Word.Name
-                                            <span class="speech-part">@collocationMix.Word.SpeechPart.ShortName</span>
+                                        <a href="@Url.Action("Item", "Word", new { id = word.ID })">
+                                            @word.Name
+                                            <span class="speech-part">@word.SpeechPart.ShortName</span>
                                         </a>
                                     </li>
                                 }

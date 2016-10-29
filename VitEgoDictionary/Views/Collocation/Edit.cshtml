@@ -11,7 +11,7 @@
 }
 
 <div id="body">
-    <div id="body-title"><h1>Phrases</h1></div>
+    <div id="body-title"><h1>Collocations</h1></div>
     <hr />
     <div id="body-body">
         <div class="panel panel-default">
@@ -238,50 +238,6 @@
                         </div>
                     </div>
                 </div>
-                @*// Associated words section*@
-                <div class="section" id="mix-section">
-                    <hr />
-                    <div class="form-group">
-                        <span class="section-title button button-primary panel-toggle">Associated Words</span>
-                        @{
-                            <span class="note item-counter">@collocation.CollocationMixes.Count @(collocation.CollocationMixes.Count == 1 ? "item" : "items")</span>
-                        }
-                        <a href ="#/" class="panel-toggle"><span class="section-chevron fa fa-chevron-right fa-fw pull-right"></span></a>
-                    </div>
-                    <div class="edit-panel" style="display:none">
-                        <form id="item-form-association">
-                            <div class="data-item-container row">
-                                @foreach (var mix in collocation.CollocationMixes.OrderBy(i => i.Word.Name))
-                                {
-                                    <div class="col-xs-12 col-sm-6 data-item">
-                                        <div class="subsection">
-                                            <div class="dashboard-subsection">
-                                                <a href="#/" class="pull-right small" data-toggle="modal" data-target="#modal-dialog"
-                                                   data-content="Are you sure you want to delete this associated word?"
-                                                   data-action="delete-data-item" data-buttons="CloseConfirm">
-                                                    <span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>
-                                                </a>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="required">Associated Word</label>
-                                                <input type="text" value="@mix.Word.Name" class="associated-word typeahead form-control required"
-                                                       autocomplete="off" , db-id="@mix.Word.ID" , db-mix-id="@mix.ID" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                        </form>
-                        <div>
-                            <a href="#/" class="more-associated-words small">
-                                <span class="fa fa-plus-square-o fa-lg fa-fw"></span><span>More associated words</span>
-                            </a>
-                        </div>
-                        <div class="form-group text-right">
-                            <input type="button" class="button button-primary panel-toggle" value="OK" />
-                        </div>
-                    </div>
-                </div> 
                 @*// Submit section*@
                 <div>
                     <hr />     

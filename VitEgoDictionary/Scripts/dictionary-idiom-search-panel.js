@@ -1,5 +1,8 @@
 ﻿//  Data retrieving and element initializing
 $(function () {
+
+    $('#search-processing').show();
+
     //  Idioms to be searched
     var idioms = new Bloodhound({
         datumTokenizer: function (datum) {
@@ -11,6 +14,7 @@ $(function () {
             url: '/Data/Idioms',
             cache: false,
             filter: function (list) {
+                $('#search-processing').hide();
                 return $.map(list, function (item) {
                     return {
                         id: item.id,

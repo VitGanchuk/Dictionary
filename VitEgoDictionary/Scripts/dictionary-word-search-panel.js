@@ -1,5 +1,8 @@
 ﻿//  Data retrieving and element initializing
 $(function () {
+
+    $('#search-processing').show();
+
     //  Words to be searched
     var words = new Bloodhound({
         datumTokenizer: function (datum) {
@@ -9,8 +12,9 @@ $(function () {
         limit: 10,
         prefetch: {
             url: '/Data/Words',
-            cache:false,
+            cache: false,
             filter: function (list) {
+                $('#search-processing').hide();
                 return $.map(list, function (item) {
                     return {
                         id: item.id,

@@ -311,16 +311,6 @@ namespace VitEgoDictionary.Controllers
                     }
                 }
                 #endregion
-                #region AssociatedWords
-                if (parameters.Mixes != null)
-                {
-                    foreach (var paramMix in parameters.Mixes)
-                    {
-                        Word word = _entities.Words.FirstOrDefault(i => i.ID == paramMix.Word);
-                        collocation.CollocationMixes.Add(new CollocationMix() { Collocation = collocation, Word = word });
-                    }
-                }
-                #endregion
                 _entities.Collocations.AddObject(collocation);
                 if (_entities.ObjectStateManager.GetObjectStateEntries(
                     System.Data.EntityState.Modified |
@@ -667,43 +657,6 @@ namespace VitEgoDictionary.Controllers
                         }
                         #endregion
                         if (isMeaningNew) collocation.Meanings.Add(meaning);
-                    }
-                }
-                #endregion
-                #region Associated Words
-                //  Removes all associated word that have been deleted by the user
-                if (parameters.Mixes == null)
-                {
-                    foreach (var mix in collocation.CollocationMixes.ToList())
-                    {
-                        _entities.CollocationMixes.DeleteObject(mix);
-                    }
-                }
-                else
-                {
-                    foreach (var mix in collocation.CollocationMixes.Where(i => !parameters.Mixes.Any(j => j.ID == i.ID)).ToList())
-                    {
-                        _entities.CollocationMixes.DeleteObject(mix);
-                    }
-                }
-                if (parameters.Mixes != null)
-                {
-                    //  Checks all associated words that should be saved
-                    foreach (var paramMix in parameters.Mixes)
-                    {
-                        CollocationMix mix = collocation.CollocationMixes.FirstOrDefault(i => i.ID == paramMix.ID);
-                        Word word = _entities.Words.FirstOrDefault(i => i.ID == paramMix.Word);
-                        //  This is a new idiom mix
-                        if (mix == null)
-                        {
-                            mix = new CollocationMix() { Collocation = collocation, Word = word };
-                            collocation.CollocationMixes.Add(mix);
-                        }
-                        //This is an existent idiom mix
-                        else
-                        {
-                            if (mix.IDF_Word != paramMix.Word) { mix.Word = word; }
-                        }
                     }
                 }
                 #endregion

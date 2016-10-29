@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -159,6 +160,8 @@
     <Compile Include="Models\Parameters\VariationParameter.cs" />
     <Compile Include="Models\Parameters\ItemParameter.cs" />
     <Compile Include="Models\Parameters\WordParameter.cs" />
+    <Compile Include="Models\PartialClasses\Collocation.cs" />
+    <Compile Include="Models\PartialClasses\Idiom.cs" />
     <Compile Include="Models\PartialClasses\PhrasalVerb.cs" />
     <Compile Include="Models\PartialClasses\SynonymSet.cs" />
     <Compile Include="Models\PartialClasses\Word.cs" />

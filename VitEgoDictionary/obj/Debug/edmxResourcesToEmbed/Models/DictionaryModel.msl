@@ -1,24 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DictionaryModelStoreContainer" CdmEntityContainer="DictionaryEntities">
-    <EntitySetMapping Name="CollocationMixes">
-      <EntityTypeMapping TypeName="IsTypeOf(DictionaryModel.CollocationMix)">
-        <MappingFragment StoreEntitySet="CollocationMixes">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="IDF_Word" ColumnName="IDF_Word" />
-          <ScalarProperty Name="IDF_Collocation" ColumnName="IDF_Collocation" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="IdiomMixes">
-      <EntityTypeMapping TypeName="IsTypeOf(DictionaryModel.IdiomMix)">
-        <MappingFragment StoreEntitySet="IdiomMixes">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="IDF_Word" ColumnName="IDF_Word" />
-          <ScalarProperty Name="IDF_Idiom" ColumnName="IDF_Idiom" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PrepositionMixExamples">
       <EntityTypeMapping TypeName="IsTypeOf(DictionaryModel.PrepositionMixExample)">
         <MappingFragment StoreEntitySet="PrepositionExamples">

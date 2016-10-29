@@ -239,8 +239,8 @@ label {
 /******************** SPAN ************************/
 span.section-chevron {
     color:#428bca;
-    position: relative;
-    top: 3px;
+    position:relative;
+    top:3px;
 }
 
 span.variation {
@@ -248,7 +248,8 @@ span.variation {
 }
 
 span.index-list-item {
-    font-size: 1.2em;
+    font-size:1.3em;
+    font-style:italic;
 }
 
 span.preposition, span.phrasal-verb, span.collocation, span.idiom {
@@ -257,6 +258,7 @@ span.preposition, span.phrasal-verb, span.collocation, span.idiom {
 
 span.speech-part, span.grammar-structure {
     color:dimgrey;
+    font-style:italic;
 }
 
 span.meaning {
@@ -286,8 +288,9 @@ span.check-mark {
 }
 
 span.topic {
-    font-size: 0.8em;
-    color: chocolate;
+    font-size:0.8em;
+    color:chocolate;
+    font-style:italic;
 }
 
 span.synonym{

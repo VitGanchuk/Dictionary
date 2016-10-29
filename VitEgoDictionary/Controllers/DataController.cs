@@ -14,7 +14,7 @@ namespace VitEgoDictionary.Controllers
         public JsonResult Words(int speechPart = (int)WordSpeechPart.Undefined)
         {
             if(speechPart == (int)WordSpeechPart.Undefined)
-                return Json(_entities.Words.
+                return Json(_entities.Words.OrderBy(i => i.Name).
                     Select(i => new {
                         id = i.ID, 
                         name = i.Name, 
@@ -22,7 +22,7 @@ namespace VitEgoDictionary.Controllers
                         item = (int)Item.Word
                     }), JsonRequestBehavior.AllowGet);
             else 
-                return Json(_entities.Words.Where(i => i.IDF_SpeechPart == speechPart).
+                return Json(_entities.Words.Where(i => i.IDF_SpeechPart == speechPart).OrderBy(i => i.Name).
                     Select(i => new {
                         id = i.ID, 
                         name = i.Name, 
@@ -37,7 +37,7 @@ namespace VitEgoDictionary.Controllers
             IEnumerable<Synonym> synonyms;
             if (speechPart == (int)WordSpeechPart.Undefined)
             {
-                synonyms = _entities.Words.
+                synonyms = _entities.Words.OrderBy(i => i.Name).
                     Select(i => new Synonym()
                     {
                         ID = i.ID,
@@ -48,7 +48,7 @@ namespace VitEgoDictionary.Controllers
             }
             else
             {
-                synonyms = _entities.Words.Where(i => i.IDF_SpeechPart == speechPart).
+                synonyms = _entities.Words.Where(i => i.IDF_SpeechPart == speechPart).OrderBy(i => i.Name).
                     Select(i => new Synonym()
                     {
                         ID = i.ID,
@@ -61,7 +61,7 @@ namespace VitEgoDictionary.Controllers
 
             if (speechPart == (int)WordSpeechPart.Undefined || speechPart == (int)WordSpeechPart.Verb)
             {
-                synonyms = synonyms.Concat(_entities.PhrasalVerbs.
+                synonyms = synonyms.Concat(_entities.PhrasalVerbs.OrderBy(i => i.Name).
                     Select(i => new Synonym()
                     {
                         ID = i.ID,
@@ -124,7 +124,7 @@ namespace VitEgoDictionary.Controllers
                 switch (item)
                 {
                     case (int)Item.Word:
-                        return Json(_entities.WordMeanings.Where(i => i.IDF_Word == id).
+                        return Json(_entities.WordMeanings.Where(i => i.IDF_Word == id).OrderBy(i => i.Meaning).
                              Select(i => new
                              {
                                  id = i.ID,
@@ -132,7 +132,7 @@ namespace VitEgoDictionary.Controllers
                                  item = item
                              }), JsonRequestBehavior.AllowGet);
                     case (int)Item.PhrasalVerb:
-                        return Json(_entities.PhrasalVerbMeanings.Where(i => i.IDF_PhrasalVerb == id).
+                        return Json(_entities.PhrasalVerbMeanings.Where(i => i.IDF_PhrasalVerb == id).OrderBy(i => i.Meaning).
                              Select(i => new
                              {
                                  id = i.ID,
@@ -140,7 +140,7 @@ namespace VitEgoDictionary.Controllers
                                  item = item
                              }), JsonRequestBehavior.AllowGet);
                     case (int)Item.Collocation:
-                        return Json(_entities.CollocationMeanings.Where(i => i.IDF_Collocation == id).
+                        return Json(_entities.CollocationMeanings.Where(i => i.IDF_Collocation == id).OrderBy(i => i.Meaning).
                              Select(i => new
                              {
                                  id = i.ID,
@@ -148,7 +148,7 @@ namespace VitEgoDictionary.Controllers
                                  item = item
                              }), JsonRequestBehavior.AllowGet);
                     case (int)Item.Idiom:
-                        return Json(_entities.IdiomMeanings.Where(i => i.IDF_Idiom == id).
+                        return Json(_entities.IdiomMeanings.Where(i => i.IDF_Idiom == id).OrderBy(i => i.Meaning).
                              Select(i => new
                              {
                                  id = i.ID,
@@ -179,7 +179,7 @@ namespace VitEgoDictionary.Controllers
         [HttpGet]
         public JsonResult PhrasalVerbs()
         {
-            return Json(_entities.PhrasalVerbs.ToList().
+            return Json(_entities.PhrasalVerbs.OrderBy(i => i.Verb.Name).ThenBy(i => i.Preposition.Name).ToList().
                 Select(i => new
                 {
                     id = i.ID,
@@ -201,7 +201,7 @@ namespace VitEgoDictionary.Controllers
         [HttpGet]
         public JsonResult Idioms()
         {
-            return Json(_entities.Idioms.
+            return Json(_entities.Idioms.OrderBy(i => i.Name).
                     Select(i => new 
                     { 
                         id = i.ID, 
@@ -212,7 +212,7 @@ namespace VitEgoDictionary.Controllers
         [HttpGet]
         public JsonResult Collocations()
         {
-            return Json(_entities.Collocations.
+            return Json(_entities.Collocations.OrderBy(i => i.Name).
                     Select(i => new 
                     { 
                         id = i.ID, 

@@ -17,14 +17,6 @@
     <Property Name="IDF_SynonymSet" Type="int" />
     <Property Name="Meaning" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="CollocationMixes">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IDF_Word" Type="int" Nullable="false" />
-    <Property Name="IDF_Collocation" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Collocations">
     <Key>
       <PropertyRef Name="ID" />
@@ -76,14 +68,6 @@
     <Property Name="IDF_Idiom" Type="int" Nullable="false" />
     <Property Name="IDF_SynonymSet" Type="int" />
     <Property Name="Meaning" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="IdiomMixes">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IDF_Word" Type="int" Nullable="false" />
-    <Property Name="IDF_Idiom" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Idioms">
     <Key>
@@ -246,34 +230,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_CollocationMix_Collocation">
-    <End Role="Collocations" Type="Self.Collocations" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="CollocationMixes" Type="Self.CollocationMixes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Collocations">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="CollocationMixes">
-        <PropertyRef Name="IDF_Collocation" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CollocationMix_Word">
-    <End Role="Words" Type="Self.Words" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="CollocationMixes" Type="Self.CollocationMixes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Words">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="CollocationMixes">
-        <PropertyRef Name="IDF_Word" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Collocations_Formality">
     <End Role="Formality" Type="Self.Formality" Multiplicity="1" />
     <End Role="Collocations" Type="Self.Collocations" Multiplicity="*" />
@@ -361,34 +317,6 @@
       </Principal>
       <Dependent Role="IdiomMeanings">
         <PropertyRef Name="IDF_SynonymSet" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_IdiomMix_Idiom">
-    <End Role="Idioms" Type="Self.Idioms" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="IdiomMixes" Type="Self.IdiomMixes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Idioms">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="IdiomMixes">
-        <PropertyRef Name="IDF_Idiom" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_IdiomMix_Word">
-    <End Role="Words" Type="Self.Words" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="IdiomMixes" Type="Self.IdiomMixes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Words">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="IdiomMixes">
-        <PropertyRef Name="IDF_Word" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -649,14 +577,12 @@
   <EntityContainer Name="DictionaryModelStoreContainer">
     <EntitySet Name="CollocationMeaningExamples" EntityType="Self.CollocationMeaningExamples" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CollocationMeanings" EntityType="Self.CollocationMeanings" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="CollocationMixes" EntityType="Self.CollocationMixes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Collocations" EntityType="Self.Collocations" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Countability" EntityType="Self.Countability" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Formality" EntityType="Self.Formality" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GrammarStructures" EntityType="Self.GrammarStructures" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="IdiomMeaningExamples" EntityType="Self.IdiomMeaningExamples" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="IdiomMeanings" EntityType="Self.IdiomMeanings" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="IdiomMixes" EntityType="Self.IdiomMixes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Idioms" EntityType="Self.Idioms" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PhrasalVerbMeaningExamples" EntityType="Self.PhrasalVerbMeaningExamples" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PhrasalVerbMeanings" EntityType="Self.PhrasalVerbMeanings" Schema="dbo" store:Type="Tables" />
@@ -682,14 +608,6 @@
     <AssociationSet Name="FK_CollocationMeanings_SynonymSets" Association="Self.FK_CollocationMeanings_SynonymSets">
       <End Role="SynonymSets" EntitySet="SynonymSets" />
       <End Role="CollocationMeanings" EntitySet="CollocationMeanings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CollocationMix_Collocation" Association="Self.FK_CollocationMix_Collocation">
-      <End Role="Collocations" EntitySet="Collocations" />
-      <End Role="CollocationMixes" EntitySet="CollocationMixes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CollocationMix_Word" Association="Self.FK_CollocationMix_Word">
-      <End Role="Words" EntitySet="Words" />
-      <End Role="CollocationMixes" EntitySet="CollocationMixes" />
     </AssociationSet>
     <AssociationSet Name="FK_Collocations_Formality" Association="Self.FK_Collocations_Formality">
       <End Role="Formality" EntitySet="Formality" />
@@ -718,14 +636,6 @@
     <AssociationSet Name="FK_IdiomMeanings_SynonymSets" Association="Self.FK_IdiomMeanings_SynonymSets">
       <End Role="SynonymSets" EntitySet="SynonymSets" />
       <End Role="IdiomMeanings" EntitySet="IdiomMeanings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_IdiomMix_Idiom" Association="Self.FK_IdiomMix_Idiom">
-      <End Role="Idioms" EntitySet="Idioms" />
-      <End Role="IdiomMixes" EntitySet="IdiomMixes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_IdiomMix_Word" Association="Self.FK_IdiomMix_Word">
-      <End Role="Words" EntitySet="Words" />
-      <End Role="IdiomMixes" EntitySet="IdiomMixes" />
     </AssociationSet>
     <AssociationSet Name="FK_Idioms_Formality" Association="Self.FK_Idioms_Formality">
       <End Role="Formality" EntitySet="Formality" />

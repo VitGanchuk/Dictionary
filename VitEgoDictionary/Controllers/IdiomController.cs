@@ -312,16 +312,6 @@ namespace VitEgoDictionary.Controllers
                     }
                 }
                 #endregion
-                #region AssociatedWords
-                if (parameters.Mixes != null)
-                {
-                    foreach (var paramMix in parameters.Mixes)
-                    {
-                        Word word = _entities.Words.FirstOrDefault(i => i.ID == paramMix.Word);
-                        idiom.IdiomMixes.Add(new IdiomMix() { Idiom = idiom, Word = word });
-                    }
-                }
-                #endregion
                 _entities.Idioms.AddObject(idiom);
                 if (_entities.ObjectStateManager.GetObjectStateEntries(
                     System.Data.EntityState.Modified |
@@ -668,43 +658,6 @@ namespace VitEgoDictionary.Controllers
                         }
                         #endregion
                         if (isMeaningNew) idiom.Meanings.Add(meaning);
-                    }
-                }
-                #endregion
-                #region Associated Words
-                //  Removes all associated word that have been deleted by the user
-                if (parameters.Mixes == null)
-                {
-                    foreach (var mix in idiom.IdiomMixes.ToList())
-                    {
-                        _entities.IdiomMixes.DeleteObject(mix);
-                    }
-                }
-                else
-                {
-                    foreach (var mix in idiom.IdiomMixes.Where(i => !parameters.Mixes.Any(j => j.ID == i.ID)).ToList())
-                    {
-                        _entities.IdiomMixes.DeleteObject(mix);
-                    }
-                }
-                if (parameters.Mixes != null)
-                {
-                    //  Checks all associated words that should be saved
-                    foreach (var paramMix in parameters.Mixes)
-                    {
-                        IdiomMix mix = idiom.IdiomMixes.FirstOrDefault(i => i.ID == paramMix.ID);
-                        Word word = _entities.Words.FirstOrDefault(i => i.ID == paramMix.Word);
-                        //  This is a new idiom mix
-                        if (mix == null)
-                        {
-                            mix = new IdiomMix() { Idiom = idiom, Word = word };
-                            idiom.IdiomMixes.Add(mix);
-                        }
-                        //This is an existent idiom mix
-                        else
-                        {
-                            if (mix.IDF_Word != paramMix.Word) { mix.Word = word; }
-                        }
                     }
                 }
                 #endregion
