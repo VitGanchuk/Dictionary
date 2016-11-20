@@ -684,6 +684,50 @@ namespace VitEgoDictionary.Controllers
 
         [HttpPost]
         [AjaxAuthorize(Roles = "Creator")]
+        public JsonResult Move(int id) {
+            Idiom idiom = _entities.Idioms.FirstOrDefault(i => i.ID == id);
+            if (idiom == null) { return Json(new { result = "error", message = "The idiom is not found" }); }
+            Collocation collocation = new Collocation()
+            {
+                Name = idiom.Name,
+                IDF_Topic = idiom.IDF_Topic,
+                IDF_Formality = idiom.IDF_Formality
+            };
+            if (idiom.Meanings != null) {
+                foreach (var idiomMeaning in idiom.Meanings) {
+                    CollocationMeaning collocationMeaning = new CollocationMeaning() { Meaning = idiomMeaning.Meaning };
+                    if (idiomMeaning.Examples != null) {
+                        foreach (var idiomMeaningExample in idiomMeaning.Examples) {
+                            collocationMeaning.Examples.Add(new CollocationMeaningExample() { Example = idiomMeaningExample.Example });
+                        }
+                    }
+                    collocation.Meanings.Add(collocationMeaning);
+                    SynonymSet synonymSet = idiomMeaning.SynonymSet;
+                    if (synonymSet != null) {
+                        synonymSet.CollocationMeanings.Add(collocationMeaning);
+                        synonymSet.IdiomMeanings.Remove(idiomMeaning);
+                    }
+                }
+            }
+            _entities.Collocations.AddObject(collocation);
+            _entities.Idioms.DeleteObject(idiom);
+            if (_entities.ObjectStateManager.GetObjectStateEntries(
+                System.Data.EntityState.Modified |
+                System.Data.EntityState.Added |
+                System.Data.EntityState.Deleted).Count() > 0) {
+                try { _entities.SaveChanges(); } catch (Exception ex) {
+                    return Json(new {
+                        result = "error",
+                        message = ex.Message,
+                        innerMessage = ex.InnerException == null ? null : ex.InnerException.Message
+                    });
+                }
+            }
+            return Json(new { result = "redirect", url = Url.Action("Item", "Collocation", new { id = collocation.ID }) });
+        }
+
+        [HttpPost]
+        [AjaxAuthorize(Roles = "Creator")]
         public JsonResult Delete(int id)
         {
             Idiom idiom = _entities.Idioms.FirstOrDefault(i => i.ID == id);

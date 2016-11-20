@@ -4,7 +4,7 @@
 
 @{
     var phrasalVerb = Model.Item as PhrasalVerb;
-    ViewBag.Title = "VitEgo Dictionary" + (phrasalVerb == null ? String.Empty : (" | " + phrasalVerb.Name));
+    ViewBag.Title = "VitEgo" + (phrasalVerb == null ? String.Empty : (" | " + phrasalVerb.Name));
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div id="body">
@@ -25,7 +25,7 @@
                             <span class="fa fa-edit fa-lg fa-fw"></span><span>Edit</span>
                         </a>
                         <a href="#/" data-toggle="modal" data-target="#modal-dialog" data-content="Are you sure you want to delete the phrasal verb '@phrasalVerb.Name'?" 
-                            data-buttons="CloseConfirm" data-action="@Url.Action("Delete", "PhrasalVerb", new { id = phrasalVerb.ID })">
+                            data-buttons="CloseDelete" data-action="@Url.Action("Delete", "PhrasalVerb", new { id = phrasalVerb.ID })">
                             <span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>
                         </a>
                     }

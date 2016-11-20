@@ -18,6 +18,13 @@
     box-shadow: 0 2px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),1px 1px 0 rgba(0,0,0,0.12);
 }
 
+.rotate {
+  /*filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);*/
+  -webkit-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  transform: rotate(-10deg);
+}
+
 /******************** HEADER *************************/
 h1 {
     font-size:1.6em;

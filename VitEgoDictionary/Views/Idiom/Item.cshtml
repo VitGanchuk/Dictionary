@@ -4,7 +4,7 @@
 
 @{
     var idiom = Model.Item as Idiom;
-    ViewBag.Title = "VitEgo Dictionary" + (idiom == null ? String.Empty : (" | " + idiom.Name));
+    ViewBag.Title = "VitEgo" + (idiom == null ? String.Empty : (" | " + idiom.Name));
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div id="body">
@@ -24,8 +24,12 @@
                         <a href="@Url.Action("Edit", "Idiom", new { id = idiom.ID })">
                             <span class="fa fa-edit fa-lg fa-fw"></span><span>Edit</span>
                         </a>
+                        <a href="#/" data-toggle="modal" data-target="#modal-dialog" data-content="Are you sure you want to turn the idiom '@idiom.Name' into a collocation?"
+                           data-buttons="CloseMove" data-action="@Url.Action("Move", "Idiom", new { id = idiom.ID })">
+                            <span class="fa fa-share-square-o fa-lg fa-fw"></span><span>Move</span>
+                        </a>
                         <a href="#/" data-toggle="modal" data-target="#modal-dialog" data-content="Are you sure you want to delete the idiom '@idiom.Name'?" 
-                            data-buttons="CloseConfirm" data-action="@Url.Action("Delete", "Idiom", new { id = idiom.ID })">
+                            data-buttons="CloseDelete" data-action="@Url.Action("Delete", "Idiom", new { id = idiom.ID })">
                             <span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>
                         </a>
                     }

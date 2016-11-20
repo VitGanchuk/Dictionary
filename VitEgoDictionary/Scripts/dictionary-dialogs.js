@@ -5,14 +5,18 @@
             $(document).data('confirmation-target', target);
             var modal = $(this);
             modal.find('.modal-body').html(target.data('content'))
-            if (target.data('buttons') == 'CloseConfirm') {
+            if (target.data('buttons') == 'CloseDelete') {
                 modal.find('.modal-title').text('Confirmation');
                 var action = target.data('action');
                 modal.find('.modal-footer').html(
                     '<button type="button" class="button button-default" data-dismiss="modal">Close</button>' +
                     '<button type="button" class="button button-primary button-delete" data-dismiss="modal">Delete</button>');
-            } else {
-                //Another set of buttons
+            } else if (target.data('buttons') == 'CloseMove') {
+                modal.find('.modal-title').text('Confirmation');
+                var action = target.data('action');
+                modal.find('.modal-footer').html(
+                    '<button type="button" class="button button-default" data-dismiss="modal">Close</button>' +
+                    '<button type="button" class="button button-primary button-delete" data-dismiss="modal">Move</button>');
             }
         } else {
             //  Something else

@@ -6,7 +6,7 @@ using System.Web;
 namespace VitEgoDictionary.Models {
     public partial class Collocation {
         /// <summary>
-        /// Finds all words or their varations associated with this idiom.
+        /// Finds all words or their variations associated with this idiom.
         /// </summary>
         /// <returns>The list of collocations.</returns>
         public IEnumerable<Word> AssociatedWords {

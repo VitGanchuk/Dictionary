@@ -236,7 +236,7 @@ $(function () {
                         '<span class="dashboard-title">Preposition</span>' +
                         '<a href="#/" class="pull-right small" data-toggle="modal" data-target="#modal-dialog"' +
                             'data-content="Are you sure you want to delete this preposition?"' +
-                            'data-action="delete-data-item" data-buttons="CloseConfirm">' +
+                            'data-action="delete-data-item" data-buttons="CloseDelete">' +
                             '<span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>' +
                         '</a>' +
                     '</div>' +
@@ -252,7 +252,7 @@ $(function () {
                                     '<label class="required">Example</label>' +
                                     '<a href="#/" class="inner pull-right" data-toggle="modal" data-target="#modal-dialog"' +
                                         'data-content="Are you sure you want to delete this example?"' +
-                                        'data-action="delete-data-subitem" data-buttons="CloseConfirm">' +
+                                        'data-action="delete-data-subitem" data-buttons="CloseDelete">' +
                                         '<span class="fa fa-trash-o fa-fw"></span>' +
                                     '</a>' +
                                     '<input type="text" autocomplete="off" class="example inner form-control required" db-id="-1">' +

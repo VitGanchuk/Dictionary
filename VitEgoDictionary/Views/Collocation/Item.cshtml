@@ -4,7 +4,7 @@
 
 @{
     Collocation collocation = Model.Item as Collocation;
-    ViewBag.Title = "VitEgo Dictionary" + (collocation == null ? String.Empty : (" | " + collocation.Name));
+    ViewBag.Title = "VitEgo" + (collocation == null ? String.Empty : (" | " + collocation.Name));
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div id="body">
@@ -24,8 +24,12 @@
                         <a href="@Url.Action("Edit", "Collocation", new { id = collocation.ID })">
                             <span class="fa fa-edit fa-lg fa-fw"></span><span>Edit</span>
                         </a>
+                        <a href="#/" data-toggle="modal" data-target="#modal-dialog" data-content="Are you sure you want to turn the collocation '@collocation.Name' into an idiom?"
+                           data-buttons="CloseMove" data-action="@Url.Action("Move", "Collocation", new { id = collocation.ID })">
+                            <span class="fa fa-share-square-o fa-lg fa-fw"></span><span>Move</span>
+                        </a>
                         <a href="#/" data-toggle="modal" data-target="#modal-dialog" data-content="Are you sure you want to delete the collocation '@collocation.Name'?" 
-                            data-buttons="CloseConfirm" data-action="@Url.Action("Delete", "Collocation", new { id = collocation.ID })">
+                            data-buttons="CloseDelete" data-action="@Url.Action("Delete", "Collocation", new { id = collocation.ID })">
                             <span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>
                         </a>
                     }

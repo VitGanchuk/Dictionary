@@ -56,7 +56,7 @@ namespace VitEgoDictionary.Controllers
         [HttpPost]
         public JsonResult LoadItems(ItemListParameters parameters)
         {
-            //  Saves the seasrch parameters in Session 
+            //  Saves the search parameters in Session 
             if (parameters != null)
             {
                 Session["CollocationSearchDestination"] = parameters.Destination;
@@ -679,6 +679,50 @@ namespace VitEgoDictionary.Controllers
                 return Json(new { result = "redirect", url = Url.Action("Item", "Collocation", new { id = collocation.ID }) });
             }
             else { return Json(new { result = "error", message = "The model state is invalid" }); }
+        }
+
+        [HttpPost]
+        [AjaxAuthorize(Roles = "Creator")]
+        public JsonResult Move(int id) {
+            Collocation collocation = _entities.Collocations.FirstOrDefault(i => i.ID == id);
+            if (collocation == null) { return Json(new { result = "error", message = "The collocation is not found" }); }
+            Idiom idiom = new Idiom()
+            {
+                Name = collocation.Name,
+                IDF_Topic = collocation.IDF_Topic,
+                IDF_Formality = collocation.IDF_Formality
+            };
+            if (collocation.Meanings != null) {
+                foreach (var collocationMeaning in collocation.Meanings) {
+                    IdiomMeaning idiomMeaning = new IdiomMeaning() { Meaning = collocationMeaning.Meaning };
+                    if (collocationMeaning.Examples != null) {
+                        foreach (var collocationMeaningExample in collocationMeaning.Examples) {
+                            idiomMeaning.Examples.Add(new IdiomMeaningExample() { Example = collocationMeaningExample.Example });
+                        }
+                    }
+                    idiom.Meanings.Add(idiomMeaning);
+                    SynonymSet synonymSet = collocationMeaning.SynonymSet;
+                    if (synonymSet != null) {
+                        synonymSet.IdiomMeanings.Add(idiomMeaning);
+                        synonymSet.CollocationMeanings.Remove(collocationMeaning);
+                    }
+                }
+            }
+            _entities.Idioms.AddObject(idiom);
+            _entities.Collocations.DeleteObject(collocation);
+            if (_entities.ObjectStateManager.GetObjectStateEntries(
+                System.Data.EntityState.Modified |
+                System.Data.EntityState.Added |
+                System.Data.EntityState.Deleted).Count() > 0) {
+                try { _entities.SaveChanges(); } catch (Exception ex) {
+                    return Json(new {
+                        result = "error",
+                        message = ex.Message,
+                        innerMessage = ex.InnerException == null ? null : ex.InnerException.Message
+                    });
+                }
+            }
+            return Json(new { result = "redirect", url = Url.Action("Item", "Idiom", new { id = idiom.ID }) });
         }
 
         [HttpPost]

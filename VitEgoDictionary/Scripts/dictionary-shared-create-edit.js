@@ -182,7 +182,7 @@ $(function () {
                     '<div class="dashboard-subsection">' +
                         '<span class="dashboard-title">Meaning</span>' +
                         '<a href="#/" class="pull-right small" data-toggle="modal" data-target="#modal-dialog"' +
-                            'data-content="Are you sure you want to delete this meaning?" data-action="delete-data-item" data-buttons="CloseConfirm">' +
+                            'data-content="Are you sure you want to delete this meaning?" data-action="delete-data-item" data-buttons="CloseDelete">' +
                             '<span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>' +
                         '</a>' +
                     '</div>' +
@@ -196,7 +196,7 @@ $(function () {
                                 '<div class="form-group data-subitem">' +
                                     '<label class="required">Example</label>' +
                                     '<a href="#/" class="inner pull-right small" data-toggle="modal" data-target="#modal-dialog"' +
-                                        'data-content="Are you sure you want to delete this example?" data-action="delete-data-subitem" data-buttons="CloseConfirm">' +
+                                        'data-content="Are you sure you want to delete this example?" data-action="delete-data-subitem" data-buttons="CloseDelete">' +
                                         '<span class="fa fa-trash-o fa-lg fa-fw"></span>' +
                                     '</a>' +
                                     '<input type="text" class="example inner form-control required" autocomplete="off" , db-id="-1" />' +
@@ -238,7 +238,7 @@ $(function () {
                 '<div class="form-group data-subitem">' +
                     '<label class="required">Example</label>' +
                     '<a href="#/" class="inner pull-right small" data-toggle="modal" data-target="#modal-dialog"' +
-                        'data-content="Are you sure you want to delete this example?" data-action="delete-data-subitem" data-buttons="CloseConfirm">' +
+                        'data-content="Are you sure you want to delete this example?" data-action="delete-data-subitem" data-buttons="CloseDelete">' +
                         '<span class="fa fa-trash-o fa-lg fa-fw"></span>' +
                     '</a>' +
                     '<input type="text" class="example inner form-control required" autocomplete="off" , db-id="-1" />' +
@@ -261,7 +261,7 @@ $(function () {
                         '<span class="dashboard-title">Synonym</span>' +
                         '<a href="#/" class="pull-right small" data-toggle="modal" data-target="#modal-dialog"' +
                             'data-content="Are you sure you want to delete this synonym from the synonym set?"' +
-                            'data-action="delete-data-subitem" data-buttons="CloseConfirm">' +
+                            'data-action="delete-data-subitem" data-buttons="CloseDelete">' +
                             '<span class="fa fa-trash-o fa-lg fa-fw"></span><span>Delete</span>' +
                         '</a>' +
                     '</div>' +

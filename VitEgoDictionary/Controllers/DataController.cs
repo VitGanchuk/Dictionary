@@ -61,7 +61,7 @@ namespace VitEgoDictionary.Controllers
 
             if (speechPart == (int)WordSpeechPart.Undefined || speechPart == (int)WordSpeechPart.Verb)
             {
-                synonyms = synonyms.Concat(_entities.PhrasalVerbs.OrderBy(i => i.Name).
+                synonyms = synonyms.Concat(_entities.PhrasalVerbs.OrderBy(i => i.Verb.Name).ThenBy(i => i.Preposition.Name).
                     Select(i => new Synonym()
                     {
                         ID = i.ID,
