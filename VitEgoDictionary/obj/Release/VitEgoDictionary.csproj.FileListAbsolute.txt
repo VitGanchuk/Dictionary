@@ -59,6 +59,6 @@ D:\Documents\Visual Studio 2015\Projects\VitEgoDictionary\VitEgoDictionary\bin\S
 D:\Documents\Visual Studio 2015\Projects\VitEgoDictionary\VitEgoDictionary\bin\System.Web.WebPages.xml
 D:\Documents\Visual Studio 2015\Projects\VitEgoDictionary\VitEgoDictionary\bin\System.Web.WebPages.Deployment.xml
 D:\Documents\Visual Studio 2015\Projects\VitEgoDictionary\VitEgoDictionary\bin\System.Web.WebPages.Razor.xml
+D:\Documents\Visual Studio 2015\Projects\VitEgoDictionary\VitEgoDictionary\obj\Release\VitEgoDictionary.csprojResolveAssemblyReference.cache
 D:\Documents\Visual Studio 2015\Projects\VitEgoDictionary\VitEgoDictionary\obj\Release\VitEgoDictionary.dll
 D:\Documents\Visual Studio 2015\Projects\VitEgoDictionary\VitEgoDictionary\obj\Release\VitEgoDictionary.pdb
-D:\Documents\Visual Studio 2015\Projects\VitEgoDictionary\VitEgoDictionary\obj\Release\VitEgoDictionary.csprojResolveAssemblyReference.cache
